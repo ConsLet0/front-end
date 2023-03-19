@@ -1,81 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Test 5.3</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:400,500,700"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body data-bs-theme="dark">
-    <section class="py-5">
-      <div class="container py-5">
-        <div class="row py-lg-5">
-          <div class="col-lg-6">
-            <h1 class="fw-bold">Bootstrap autocomplete dropdown</h1>
-            <p class="fst-italic text-muted">
-              Topan kalo diajarin susah anjing kayak ngajarin bocah umur 5 tahun ngoding asu
-              <a
-                class="fw-bold text-light"
-                href="https://github.com/jshjohnson/Choices"
-                target="_blank"
-                >yuk bisa yuk</a
-              >
-              botak anak jawa kerjaannya ngomel mulu kekurangan estoteron
-              <a class="text-light" href="#" target="_blank">Lorem ipsum dolor sit.</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+<html>
+<head>
+	<title>Cafe Website</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<header>
+		<div class="container">
+			<h1>Cafe Name</h1>
+			<nav>
+				<ul>
+					<li><a href="#menu">Menu</a></li>
+					<li><a href="#about">About Us</a></li>
+					<li><a href="#contact">Contact Us</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
 
-    <section class="pb-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="card border-0">
-              <div class="card-body p-0">
-                <!-- AUTO COMPLETE DROPDOWN -->
-                <select
-                  class="selectpicker form-control border-0 mb-1 px-4 py-4 rounded shadow"
-                >
-                  <option value="Ultrasound Knee Right">
-                    Ultrasound Knee Right
-                  </option>
-                  <option value="Ultrasound Knee Left">
-                    Ultrasound Knee Left
-                  </option>
-                  <option value="MRI Knee Right">MRI Knee Right</option>
-                  <option value="MRI Knee Left">MRI Knee Left</option>
-                  <option value="MRI Forearm/Elbow Right">
-                    MRI Forearm/Elbow Right
-                  </option>
-                  <option value="MRI Forearm/Elbow Left">
-                    MRI Forearm/Elbow Left
-                  </option>
-                  <option value="CT Knee Right">CT Knee Right</option>
-                  <option value="CT Knee Left">CT Knee Left</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-      crossorigin="anonymous"
-    ></script>
-    <script src="app.js"></script>
-  </body>
+	<section id="banner">
+		<div class="container">
+			<h2>Enjoy your coffee with us</h2>
+			<a href="#menu" class="btn">See Menu</a>
+		</div>
+	</section>
+
+	<section id="menu">
+		<div class="container">
+			<h2>Our Menu</h2>
+			<div class="menu-item">
+				<div class="menu-item-image" style="background-image: url('https://via.placeholder.com/300x200.png?text=Product+1')"></div>
+				<div class="menu-item-details">
+					<h3>Product 1</h3>
+					<p>Product description goes here.</p>
+					<span class="menu-item-price">$5.00</span>
+				</div>
+			</div>
+			<div class="menu-item">
+				<div class="menu-item-image" style="background-image: url('https://via.placeholder.com/300x200.png?text=Product+2')"></div>
+				<div class="menu-item-details">
+					<h3>Product 2</h3>
+					<p>Product description goes here.</p>
+					<span class="menu-item-price">$3.50</span>
+				</div>
+			</div>
+			<div class="menu-item">
+				<div class="menu-item-image" style="background-image: url('https://via.placeholder.com/300x200.png?text=Product+3')"></div>
+				<div class="menu-item-details">
+					<h3>Product 3</h3>
+					<p>Product description goes here.</p>
+					<span class="menu-item-price">$6.75</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="about">
+		<div class="container">
+			<h2>About Us</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut lorem id lacus congue dignissim. Sed ut eleifend velit. Donec bibendum luctus nunc, sit amet varius tortor pharetra a. Duis laoreet, lectus eget ultrices finibus, ipsum nibh ullamcorper dolor, ut hendrerit lorem magna vel tortor. In quis odio eu nisi laoreet lacinia eget sit amet metus. Praesent pharetra volutpat enim, a malesuada eros bibendum ut.</p>
+		</div>
+	</section>
+
+	<section id="contact">
+    <div class="container">
+			<h2>Contact Us</h2>
+			<form action="#" method="post">
+				<label for="name">Name</label>
+				<input type="text" id="name" name="name" required>
+
+				<label for="email">Email</label>
+				<input type="email" id="email" name="email" required>
+
+				<label for="message">Message</label>
+				<textarea id="message" name="message" required></textarea>
+
+				<input type="submit" value="Send Message" class="btn">
+			</form>
+		</div>
+	</div>
+</section>
+
+<footer>
+	<div class="container">
+		<p>&copy; Cafe Name. All rights reserved.</p>
+	</div>
+</footer>
+
+<script src="app.js"></script>
+</body>
 </html>
