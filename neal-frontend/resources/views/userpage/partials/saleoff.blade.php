@@ -11,7 +11,7 @@
         <div class="product__discount__item__text">
             <span>Dried Fruit</span>
             <h5><a href="#">Raisin’n’nuts</a></h5>
-            <div class="product__item__price">$30.00 <span>$36.00</span></div>
+            <div class="product__item__price">$30.00 </div>
         </div>
     </div>
 </div>

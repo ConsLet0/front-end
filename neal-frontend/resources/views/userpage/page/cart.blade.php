@@ -27,7 +27,7 @@
                             <thead>
                                 <tr>
                                     <th class="shoping__product">Products</th>
-                                    <th>Nama</th>
+                                    <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Total</th>
                                     <th></th>
@@ -36,6 +36,10 @@
                             <tbody>
                                 {{-- Start foreach product list --}}
                                 <tr>
+                                    <td class="shoping__cart__item">
+                                        <img src="{{ asset('userpage/img/cart/cart-1.jpg')}}" alt="">
+                                        <h5>Vegetable’s Package</h5>
+                                    </td>
                                     <td class="shoping__cart__price">
                                         $55.00
                                     </td>

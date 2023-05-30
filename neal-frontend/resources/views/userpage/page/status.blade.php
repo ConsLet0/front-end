@@ -41,7 +41,7 @@
                                         On Process
                                     </td>
                                     <td class="shoping__cart__quantity">
-                                        <button type="button" class="btn btn-warning">My Bill</button>
+                                        <button type="button" class="btn btn-warning">Download Bill</button>
                                     </td>
                                 </tr>
                                 {{-- End foreach product list --}}

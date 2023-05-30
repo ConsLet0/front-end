@@ -3,7 +3,7 @@
         <div class="product__item__pic set-bg" data-setbg="{{ asset('userpage/img/product/product-1.jpg') }}">
             <ul class="product__item__pic__hover">
                 <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                <li><a href="#"><i class="fa fa-info"></i></a></li>
+                <li><a href="/deatils"><i class="fa fa-info"></i></a></li>
             </ul>
         </div>
         <div class="product__item__text">

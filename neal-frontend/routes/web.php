@@ -36,3 +36,7 @@ Route::get('/checkout', function () {
 Route::get('/status', function () {
     return view('userpage.page.status');
 });
+
+Route::get('/deatils', function () {
+    return view('userpage.page.productdetails');
+});
