@@ -12,9 +12,10 @@
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/food">Food</a></li>
-            <li><a href="/drink">Drink</a></li>
-            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="/product">Food</a></li>
+            <li><a href="/product">Drink</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/status">Status</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
@@ -37,6 +38,7 @@
                         <li><a href="/product">Food</a></li>
                         <li><a href="/product">Drink</a></li>
                         <li><a href="/contact">Contact</a></li>
+                        <li><a href="/status">Status</a></li>
                     </ul>
                 </nav>
             </div>

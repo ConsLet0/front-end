@@ -32,3 +32,7 @@ Route::get('/cart', function () {
 Route::get('/checkout', function () {
     return view('userpage.page.checkout');
 });
+
+Route::get('/status', function () {
+    return view('userpage.page.status');
+});
