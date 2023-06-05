@@ -52,3 +52,23 @@ Route::get('/category', function () {
 Route::get('/products', function () {
     return view('adminpage.page.products');
 });
+
+Route::get('/table', function () {
+    return view('adminpage.page.table');
+});
+
+Route::get('/order', function () {
+    return view('adminpage.page.order');
+});
+
+Route::get('/detailorder/incoming', function () {
+    return view('adminpage.page.detailorder-incoming');
+});
+
+Route::get('/detailorder/all', function () {
+    return view('adminpage.page.detailorder-allorder');
+});
+
+Route::get('/admin', function () {
+    return view('adminpage.page.admin');
+});

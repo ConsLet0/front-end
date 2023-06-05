@@ -37,20 +37,38 @@
                     <i class="bi bi-grid"></i>
                     <span>Utama</span>
                 </a>
-            </li><!-- End Dashboard Nav -->
+            </li>
             <li class="nav-heading">Pages</li>
-
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/category">
                     <i class="bi bi-bookmark-plus"></i>
                     <span>Kategori</span>
                 </a>
-            </li><!-- End Profile Page Nav -->
+            </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/products">
                     <i class="bx bxs-food-menu"></i>
                     <span>Menu Produk</span>
                 </a>
-            </li><!-- End F.A.Q Page Nav -->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/table">
+                    <i class="bx bx-chair"></i>
+                    <span>Meja Makan</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/order">
+                    <i class="bx bx-chair"></i>
+                    <span>Daftar Pesanan</span>
+                </a>
+            </li>
+            <li class="nav-heading">Administrator</li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/admin">
+                    <i class="bx bxs-user-plus"></i>
+                    <span>Tambah Admin</span>
+                </a>
+            </li>
         </ul>
     </aside><!-- End Sidebar-->

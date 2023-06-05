@@ -1,14 +1,14 @@
 @extends('adminpage.layout.main')
 @section('breadcrumb')
     <div class="pagetitle">
-        <h1>Menu Pengguna</h1>
+        <h1>Meja Makan</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active">Category</li>
+                <li class="breadcrumb-item active">Meja</li>
                 <li class="breadcrumb-item"><a href="/homepage">Home</a></li>
             </ol>
         </nav>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addcategory"><i class="bi bi-plus-square"></i> Tambah Category</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addmeja"><i class="bi bi-plus-square"></i> Tambah Meja</button>
     </div><!-- End Page Title -->
 @endsection
 @section('content')
@@ -22,7 +22,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Kategori</th>
+                                    <th scope="col">No Meja</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -30,10 +30,10 @@
                                 {{-- Kategori foreach start --}}
                                 <tr>
                                     <th scope="row">1</th>
-                                    <td>Coffee</td>
+                                    <td>1</td>
                                     <td>
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editcategory"><i class="bi bi-pencil-fill"></i></button>
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletecategory"><i class="bi bi-trash3"></i></button>
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editmeja"><i class="bi bi-pencil-fill"></i></button>
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletemeja"><i class="bi bi-trash3"></i></button>
                                     </td>
                                 </tr>
                                 {{-- Kategori foreach End --}}
@@ -46,8 +46,8 @@
             </div>
         </div>
     </section>
-    @include('adminpage.modal.category.addcategorymodal')
-    @include('adminpage.modal.category.editcategorymodal')
-    @include('adminpage.modal.category.deletecategorymodal')
+    @include('adminpage.modal.meja.addmejamodal')
+    @include('adminpage.modal.meja.editmejamodal')
+    @include('adminpage.modal.meja.deletemejamodal')
 @endsection
   
