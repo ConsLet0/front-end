@@ -41,6 +41,10 @@ Route::get('/deatils', function () {
     return view('userpage.page.productdetails');
 });
 // Adminpage
+Route::get('/login', function () {
+    return view('adminpage.page.login');
+});
+
 Route::get('/homepage', function () {
     return view('adminpage.page.homepage');
 });
