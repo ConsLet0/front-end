@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\MenuCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +19,11 @@ Route::get('/', function () {
     return view('userpage.page.homepage');
 });
 
-Route::get('/product', function () {
-    return view('userpage.page.showproduct');
-});
+// Route::get('/product', function () {
+//     return view('userpage.page.showproduct');
+// });
+
+Route::get('{id}', [ProductController::class, 'show_products']);
 
 Route::get('/contact', function () {
     return view('userpage.page.contact');
@@ -49,9 +53,10 @@ Route::get('/homepage', function () {
     return view('adminpage.page.homepage');
 });
 
-Route::get('/category', function () {
-    return view('adminpage.page.category');
-});
+Route::get('/category', [MenuCategoryController::class, 'get_all_onadmin']);
+Route::post('/add_menu_category', [MenuCategoryController::class, 'add_menu_category']);
+Route::post('/edit_menu_category', [MenuCategoryController::class, 'edit_menu_category']);
+Route::post('/delete_menu_category/{id}', [MenuCategoryController::class, 'delete_menu_category']);
 
 Route::get('/products', function () {
     return view('adminpage.page.products');

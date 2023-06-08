@@ -12,8 +12,8 @@
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/product">Food</a></li>
-            <li><a href="/product">Drink</a></li>
+            <li><a href="/food">Food</a></li>
+            <li><a href="/drink">Drink</a></li>
             <li><a href="/contact">Contact</a></li>
             <li><a href="/status">Status</a></li>
         </ul>
@@ -33,10 +33,17 @@
             </div>
             <div class="col-lg-6">
                 <nav class="header__menu">
+                    <?php
+                        $category = DB::table('product_categories')->
+                        orderBy('name','desc')
+                        ->get();
+                    ?>
                     <ul>
                         <li><a href="/">Home</a></li>
-                        <li><a href="/product">Food</a></li>
-                        <li><a href="/product">Drink</a></li>
+                        {{-- @dd($category) --}}
+                            @foreach ($category as $ct)
+                                <li><a href="{{ $ct->id }}">{{ $ct->name }}</a></li>
+                            @endforeach
                         <li><a href="/contact">Contact</a></li>
                         <li><a href="/status">Status</a></li>
                     </ul>

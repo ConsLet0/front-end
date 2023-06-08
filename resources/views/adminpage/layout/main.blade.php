@@ -82,6 +82,8 @@
     <!-- Template Main JS File -->
     <script src="{{ asset('adminpage/js/main.js') }}"></script>
 
+    @yield('script')
+
 </body>
 
 </html>

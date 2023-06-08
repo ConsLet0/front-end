@@ -28,9 +28,16 @@
                             <span>Categories</span>
                         </div>
                         <ul>
-                            {{-- Start foreach category --}}
-                            <li><a href="#">Fresh Meat</a></li>
-                            {{-- End foreach category --}}
+                            {{-- @dd($menu_category) --}}
+                            @if (count($menu_category) == 0)
+                                No Data
+                            @else
+                                @foreach ($menu_category as $mct)
+                                {{-- Start foreach category --}}
+                                    <li><a href="{{ $mct->id }}">{{ $mct->name }}</a></li>
+                                {{-- End foreach category --}}
+                                @endforeach
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -60,16 +67,21 @@
                             </div>
                             <div class="col-lg-4 col-md-4">
                                 <div class="filter__found">
-                                    <h6><span>16</span> Products found</h6>
+                                    <h6>
+                                        <span>{{ $products->count() }}</span>
+                                        Products found
+                                    </h6>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        {{-- Start foreach product --}}
-                        @include('userpage.partials.product')
-                        {{-- End foreach product --}}
-                    </div>
+                        @foreach ($products as $prd)
+                            <div class="row">
+                                {{-- Start foreach product --}}
+                                    @include('userpage.partials.product')
+                                {{-- End foreach product --}}
+                            </div>
+                        @endforeach
                     <div class="product__pagination">
                         <a href="#">1</a>
                         <a href="#">2</a>

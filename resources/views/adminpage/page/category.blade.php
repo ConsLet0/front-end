@@ -28,14 +28,19 @@
                             </thead>
                             <tbody>
                                 {{-- Kategori foreach start --}}
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Coffee</td>
-                                    <td>
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editcategory"><i class="bi bi-pencil-fill"></i></button>
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletecategory"><i class="bi bi-trash3"></i></button>
-                                    </td>
-                                </tr>
+                                {{-- @dd($menu_categories) --}}
+                                @foreach ($menu_categories as $ct)
+                                    
+                                    <tr>
+                                        <th scope="row">{{ $ct->id }}</th>
+                                        <td>{{ $ct->name }}</td>
+                                        <td>
+                                            <button type="button" value="{{ $ct->id }}" class="btn btn-warning editcategory" data-bs-toggle="modal" data-bs-target="#editcategory"><i class="bi bi-pencil-fill"></i></button>
+                                            <button type="button" value="{{ $ct->id }}" class="btn btn-danger deleteCategoryBtn" data-bs-toggle="modal" data-bs-target="#deletecategory"><i class="bi bi-trash3"></i></button>
+                                        </td>
+                                    </tr>
+
+                                @endforeach
                                 {{-- Kategori foreach End --}}
                             </tbody>
                         </table>
@@ -51,3 +56,13 @@
     @include('adminpage.modal.category.deletecategorymodal')
 @endsection
   
+{{-- @section('script')
+    <script>
+        $(document).ready(function () {
+            $(document).on('click', '.editcategory', function () {
+                var menu_category_id = $(this).val();
+                alert(menu_category_id);
+            });
+        });
+    </script>
+@endsection --}}
