@@ -17,49 +17,73 @@
     </section>
 @endsection
 @section('content')
+@if (empty($cart) || count($cart) == 0)
+    <div class="warn">
+        <h3>No Data</h3>
+    </div>
+
+@else
     <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th class="shoping__product">Products</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{-- Start foreach product list --}}
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="{{ asset('userpage/img/cart/cart-1.jpg')}}" alt="">
-                                        <h5>Vegetable’s Package</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        $55.00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        $110.00
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
-                                </tr>
-                                {{-- End foreach product list --}}
-                            </tbody>
-                        </table>
+                        
+                        <?php $total_price  = 0; ?>
+                        <?php $total_quantity  = 0; ?>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="shoping__product">Products</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($cart as $ct => $val)
+                                        <?php $price = $val['price']; ?>
+                                        <?php $p = number_format($val['price'], 0, ",", "."); ?>
+                                        <?php 
+                                            $subprice = $p * $val['quantity']; 
+
+                                            $sp = number_format($subprice, 0, ",", ".");
+                                        ?>
+                                        {{-- Start foreach product list --}}
+                                        <tr>
+                                            <td class="shoping__cart__item">
+                                                <img src="{{ url('product/'. $val['image']) }}" alt="">
+                                                <h5>{{ $val['name'] }}</h5>
+                                            </td>
+                                            <td class="shoping__cart__price">
+                                                ${{ $p }}
+                                            </td>
+                                            <td class="shoping__cart__quantity">
+                                                <div class="quantity">
+                                                    <div class="pro-qty">
+                                                        <input type="text" value="{{ $val['quantity'] }}">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="shoping__cart__total">
+                                                ${{ $sp }}
+                                            </td>
+                                            <td class="shoping__cart__item__close">
+                                                <a href="{{ route('remove_cart', $ct) }}">
+                                                    <span class="icon_close"></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {{-- End foreach product list --}}
+                                        <?php $total_price += $sp; ?>
+                                        <?php $total_quantity += $val['quantity']; ?>
+                                    @endforeach
+                                    <?php $tp = number_format($total_price, 0, ",", "."); ?>
+                                </tbody>
+                            </table>
+                        
                     </div>
                 </div>
             </div>
@@ -75,14 +99,15 @@
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
-                            <li>Subtotal <span>$454.98</span></li>
-                            <li>Total <span>$454.98</span></li>
+                            <li>Subtotal <span>${{ $tp }}</span></li>
+                            <li>Total <span>${{ $tp }}</span></li>
                         </ul>
-                        <a href="/checkout" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        <a href="{{ route('checkout') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Shoping Cart Section End -->
+    @endif
 @endsection

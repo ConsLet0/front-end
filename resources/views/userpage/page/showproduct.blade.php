@@ -28,16 +28,11 @@
                             <span>Categories</span>
                         </div>
                         <ul>
-                            {{-- @dd($menu_category) --}}
-                            @if (count($menu_category) == 0)
-                                No Data
-                            @else
                                 @foreach ($menu_category as $mct)
                                 {{-- Start foreach category --}}
-                                    <li><a href="{{ $mct->id }}">{{ $mct->name }}</a></li>
+                                    <li><a href="/menu/{{ $mct->id }}">{{ $mct->name }}</a></li>
                                 {{-- End foreach category --}}
                                 @endforeach
-                            @endif
                         </ul>
                     </div>
                 </div>

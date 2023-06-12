@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\Table;
+use App\Models\Product;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
 {
@@ -22,10 +27,9 @@ class OrderController extends Controller
 
     public function view_cart(){
         $cart = session('cart');
-        $table = Table::orderBy('no_table', 'asc')->get();
-        $payment = Payment::orderBy('name', 'asc')->get();
+        // $table = Table::orderBy('no_table', 'asc')->get();
 
-        return view('cart_test', compact('table', 'payment'))->with('cart', $cart);
+        return view('userpage.page.cart')->with('cart', $cart);
     }
 
     public function remove_cart($product_id){
@@ -49,6 +53,6 @@ class OrderController extends Controller
         // dd($order_id);
         $my_order_detail = OrderDetail::where('order_id', $order_id)->get();
 
-        return view('ordered', compact('order_id', 'my_order_detail'));
+        return redirect()->back()->with('success', 'Checkout Success!');
     }
 }

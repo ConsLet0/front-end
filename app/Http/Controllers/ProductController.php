@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
+    public function show_products_onadmin(){
+        $products = Product::all();
+
+        return view('adminpage.page.products', compact('products'));
+    }
+
     public function show_products($id){
         $category = ProductCategory::find($id);
         $products = Product::where('product_category_id', $category->id)->orderBy('created_at', 'desc')->get();
@@ -25,7 +31,22 @@ class ProductController extends Controller
         $menu_category = MenuCategory::find($id);
         $products = Product::where('menu_category_id', $menu_category->id)->orderBy('created_at', 'desc')->get();
 
+        $menu_category = MenuCategory::where('product_category_id', $menu_category->id)->orderBy('created_at', 'desc')->get();
+
         return view('userpage.page.showproduct', compact('menu_category', 'products'));
+    }
+
+    public function product_detail($id){
+        $product = Product::find($id);
+
+        // $courseDetail = CourseDetail::where('course_id', $id)->get();
+        // $video = DB::table('course_videos')
+        // join('course_details', 'course_videos.course_detail_id','=','course_details.id')
+        // ->select('course_videos.*')
+        // ->where('course_videos.course_detail_id','course_details.id')
+        // ->get();
+
+        return view('userpage.page.productdetails', compact('product'));
     }
 
     public function add_product(Request $request){

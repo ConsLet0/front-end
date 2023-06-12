@@ -55,32 +55,34 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- Products foreach start --}}
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Matcha Latte</td>
-                                    <td>Minuman</td>
-                                    <td>
-                                        <img src="{{ asset('adminpage/img/product-5.jpg') }}" width="60px" alt="">
-                                    </td>
-                                    <td>$2000</td>
-                                    <td>
-                                        {{-- Looping Status --}}
-                                        <strong class="text-success">Tersedia</strong>
-                                        <strong class="text-danger">Habis</strong>
-                                    </td>
-                                    <td>
-                                        {{-- Looping Kategori --}}
-                                        <strong class="text-primary">Coffee</strong>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                            data-bs-target="#editproducts"><i class="bi bi-pencil-fill"></i></button>
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="#deleteproducts"><i class="bi bi-trash3"></i></button>
-                                    </td>
-                                </tr>
-                                {{-- Products foreach end --}}
+                                @foreach ($products as $product)
+                                    {{-- Products foreach start --}}
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>{{ $product->name }}</td>
+                                        <td>{{ $product->product_category->name }}</td>
+                                        <td>
+                                            <img src="{{ asset('product/'.$product->image) }}" width="60px" alt="">
+                                        </td>
+                                        <td>${{ $product->price }}</td>
+                                        <td>
+                                            {{-- Looping Status --}}
+                                            <strong class="text-success">Tersedia</strong>
+                                            <strong class="text-danger">Habis</strong>
+                                        </td>
+                                        <td>
+                                            {{-- Looping Kategori --}}
+                                            <strong class="text-primary">{{ $product->menu_category->name }}</strong>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                data-bs-target="#editproducts"><i class="bi bi-pencil-fill"></i></button>
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                data-bs-target="#deleteproducts"><i class="bi bi-trash3"></i></button>
+                                        </td>
+                                    </tr>
+                                    {{-- Products foreach end --}}
+                                @endforeach
                             </tbody>
                         </table>
                         <!-- End Table with stripped rows -->

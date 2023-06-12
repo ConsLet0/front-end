@@ -2,10 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Table;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class TableController extends Controller
 {
+    public function show_tables_onadmin(){
+        $tables = Table::all();
+
+        return view('adminpage.page.table', compact('tables'));
+    }
+    
     public function add_table(Request $request){
         $rules = [
             'no_table' => 'required|integer'

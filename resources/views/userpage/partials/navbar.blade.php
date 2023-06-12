@@ -4,7 +4,7 @@
 </div>
 
 <!-- Humberger Begin -->
-<div class="humberger__menu__overlay"></div>
+{{-- <div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
     <div class="humberger__menu__logo">
         <a href="/"><img src="{{ asset('userpage/img/logo.png') }}" alt=""></a>
@@ -19,7 +19,7 @@
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
-</div>
+</div> --}}
 <!-- Humberger End -->
 
 <!-- Header Section Begin -->
@@ -42,7 +42,7 @@
                         <li><a href="/">Home</a></li>
                         {{-- @dd($category) --}}
                             @foreach ($category as $ct)
-                                <li><a href="{{ $ct->id }}">{{ $ct->name }}</a></li>
+                                <li><a href="/category/{{ $ct->id }}">{{ $ct->name }}</a></li>
                             @endforeach
                         <li><a href="/contact">Contact</a></li>
                         <li><a href="/status">Status</a></li>
@@ -52,9 +52,8 @@
             <div class="col-lg-3">
                 <div class="header__cart">
                     <ul>
-                        <li><a href="/cart"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                        <li><a href="/cart"><i class="fa fa-shopping-bag"></i></a></li>
                     </ul>
-                    <div class="header__cart__price">Total item: <span>$150.00</span></div>
                 </div>
             </div>
         </div>

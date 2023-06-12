@@ -27,16 +27,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- Kategori foreach start --}}
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>1</td>
-                                    <td>
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editmeja"><i class="bi bi-pencil-fill"></i></button>
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletemeja"><i class="bi bi-trash3"></i></button>
-                                    </td>
-                                </tr>
-                                {{-- Kategori foreach End --}}
+                                @foreach ($tables as $table)
+                                    {{-- Kategori foreach start --}}
+                                    <tr>
+                                        <th scope="row">{{ $table->id }}</th>
+                                        <td>{{ $table->no_table }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editmeja"><i class="bi bi-pencil-fill"></i></button>
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletemeja"><i class="bi bi-trash3"></i></button>
+                                        </td>
+                                    </tr>
+                                    {{-- Kategori foreach End --}}
+                                @endforeach
                             </tbody>
                         </table>
                         <!-- End Table with stripped rows -->
