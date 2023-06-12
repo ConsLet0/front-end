@@ -59,9 +59,13 @@
 {{-- @section('script')
     <script>
         $(document).ready(function () {
-            $(document).on('click', '.editcategory', function () {
-                var menu_category_id = $(this).val();
-                alert(menu_category_id);
+            $(.deleteCategoryBtn).click(function (e) { 
+                e.preventDefault();
+                
+                var category_id = $(this).val();
+                $('#menu_category_id').val(menu_category_id);
+
+                $('#deleteModal').modal('show');
             });
         });
     </script>

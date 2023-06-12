@@ -1,4 +1,4 @@
-<div class="modal fade" id="deletecategory" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <input type="text" name="menu_category_delete_id" id="menu_categories_id">
+                <input type="text" name="menu_category_delete_id" id="menu_category_id">
                 Yakin Hapus Kategori [Category Name] ?
             </div>
             <div class="modal-footer">

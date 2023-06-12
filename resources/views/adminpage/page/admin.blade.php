@@ -27,16 +27,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- Kategori foreach start --}}
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Ogani@gmail.com</td>
-                                    <td>
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editadmin"><i class="bi bi-pencil-fill"></i></button>
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteadmin"><i class="bi bi-trash3"></i></button>
-                                    </td>
-                                </tr>
-                                {{-- Kategori foreach End --}}
+                                @foreach ($admins as $admin)
+                                    {{-- Kategori foreach start --}}
+                                    <tr>
+                                        <th scope="row">{{ $admin->id }}</th>
+                                        <td>{{ $admin->email }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editadmin"><i class="bi bi-pencil-fill"></i></button>
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteadmin"><i class="bi bi-trash3"></i></button>
+                                        </td>
+                                    </tr>
+                                    {{-- Kategori foreach End --}}
+                                @endforeach
                             </tbody>
                         </table>
                         <!-- End Table with stripped rows -->

@@ -6,7 +6,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="formAddkategori" class="form-kategori" method="POST" enctype="multipart/form-data">
+                <form action="/add_admin" id="formAddkategori" class="form-kategori" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="row">
                         <div class="col-md-12 mb-2">
                             <label for=""><strong>Nama Admin</strong></label>
@@ -30,12 +31,13 @@
                             </div>
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-success">Simpan</button>
+                    </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                <button type="button" class="btn btn-success">Simpan</button>
-            </div>
+            
         </div>
     </div>
 </div><!-- End Vertically centered Modal-->
