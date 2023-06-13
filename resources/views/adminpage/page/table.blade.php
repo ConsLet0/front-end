@@ -33,8 +33,7 @@
                                         <th scope="row">{{ $table->id }}</th>
                                         <td>{{ $table->no_table }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editmeja"><i class="bi bi-pencil-fill"></i></button>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletemeja"><i class="bi bi-trash3"></i></button>
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editmeja"><i class="ri ri-eye-fill"></i></button>
                                         </td>
                                     </tr>
                                     {{-- Kategori foreach End --}}
@@ -50,6 +49,5 @@
     </section>
     @include('adminpage.modal.meja.addmejamodal')
     @include('adminpage.modal.meja.editmejamodal')
-    @include('adminpage.modal.meja.deletemejamodal')
 @endsection
   

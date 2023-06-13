@@ -6,28 +6,35 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/add_menu_category" id="add_menu_category" class="form-kategori" method="POST" enctype="multipart/form-data">
+                <form action="/add_menu_category" id="add_menu_category" class="form-kategori" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Masukan Nama Kategori !">
+                                <input type="text" name="name" id="name" class="form-control"
+                                    placeholder="Masukan Nama Kategori !">
                                 <span class="text-danger error-text name_error" role="alert"></span>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <?php
-                                        $product_categories = DB::table('product_categories')->
-                                        orderBy('name','desc')
-                                        ->get();
-                                    ?>
-                                <select name="product_category" id="ProductCategory" required>
-                                    @foreach($product_categories as $ct)
-                                        <option value="{{$ct->id}}">{{$ct->name}}</option>
-                                    @endforeach
-                                </select>
+                                $product_categories = DB::table('product_categories')
+                                    ->orderBy('name', 'desc')
+                                    ->get();
+                                ?>
                                 <span class="text-danger error-text name_error" role="alert"></span>
+                            </div>
+                            <div class="form-group mt-3 mb-3">
+                                <div class="col-md-12">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option disabled selected>Jenis Produk</option>
+                                        @foreach ($product_categories as $ct)
+                                            <option value="{{ $ct->id }}">{{ $ct->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>

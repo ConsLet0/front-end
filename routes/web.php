@@ -32,6 +32,7 @@ Route::get('/detail/{id}', [ProductController::class, 'product_detail']);
 Route::get('/contact', function () {
     return view('userpage.page.contact');
 });
+
 Route::get('/status', function () {
     return view('userpage.page.status');
 });

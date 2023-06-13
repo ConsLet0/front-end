@@ -33,8 +33,7 @@
                                         <th scope="row">{{ $admin->id }}</th>
                                         <td>{{ $admin->email }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editadmin"><i class="bi bi-pencil-fill"></i></button>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteadmin"><i class="bi bi-trash3"></i></button>
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editadmin"><i class="ri ri-eye-fill"></i></button>
                                         </td>
                                     </tr>
                                     {{-- Kategori foreach End --}}
@@ -50,5 +49,4 @@
     </section>
     @include('adminpage.modal.admin.addadminmodal')
     @include('adminpage.modal.admin.editadminmodal')
-    @include('adminpage.modal.admin.deleteadminmodal')
 @endsection

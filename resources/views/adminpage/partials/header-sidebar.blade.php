@@ -59,7 +59,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/order">
-                    <i class="bx bx-chair"></i>
+                    <i class="bx bx-cart-alt"></i>
                     <span>Daftar Pesanan</span>
                 </a>
             </li>
@@ -68,6 +68,12 @@
                 <a class="nav-link collapsed" href="/admin">
                     <i class="bx bxs-user-plus"></i>
                     <span>Tambah Admin</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/">
+                    <i class="bx bxs-user-circle"></i>
+                    <span>Halaman Pengguna</span>
                 </a>
             </li>
         </ul>

@@ -8,7 +8,7 @@
                 <li class="breadcrumb-item"><a href="/homepage">Home</a></li>
             </ol>
         </nav>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addcategory"><i class="bi bi-plus-square"></i> Tambah Category</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addcategory"><i class="bi bi-plus-square"></i> Tambah Kategori</button>
     </div><!-- End Page Title -->
 @endsection
 @section('content')
@@ -30,16 +30,13 @@
                                 {{-- Kategori foreach start --}}
                                 {{-- @dd($menu_categories) --}}
                                 @foreach ($menu_categories as $ct)
-                                    
                                     <tr>
                                         <th scope="row">{{ $ct->id }}</th>
                                         <td>{{ $ct->name }}</td>
                                         <td>
-                                            <button type="button" value="{{ $ct->id }}" class="btn btn-warning editcategory" data-bs-toggle="modal" data-bs-target="#editcategory"><i class="bi bi-pencil-fill"></i></button>
-                                            <button type="button" value="{{ $ct->id }}" class="btn btn-danger deleteCategoryBtn" data-bs-toggle="modal" data-bs-target="#deletecategory"><i class="bi bi-trash3"></i></button>
+                                            <button type="button" value="{{ $ct->id }}" class="btn btn-primary editcategory" data-bs-toggle="modal" data-bs-target="#editcategory"><i class="ri ri-eye-fill"></i></button>
                                         </td>
                                     </tr>
-
                                 @endforeach
                                 {{-- Kategori foreach End --}}
                             </tbody>
@@ -53,7 +50,6 @@
     </section>
     @include('adminpage.modal.category.addcategorymodal')
     @include('adminpage.modal.category.editcategorymodal')
-    @include('adminpage.modal.category.deletecategorymodal')
 @endsection
   
 {{-- @section('script')
