@@ -16,7 +16,7 @@ class Order extends Model
     protected $primaryKey = 'order_id';
 
     protected $fillable = [
-        'order_date', 'total_price', 'quantity'
+        'order_date', 'total_price', 'quantity', 'status'
     ];
 
     public static function add_order(Request $request){
@@ -33,6 +33,7 @@ class Order extends Model
             'order_date' => date('Y-m-d'),
             'total_price' => $total_price,
             'quantity' => $total_quantity,
+            'status' => 0,
             // 'table_id' => $request->table_id,
         ]);
         // dd($data);

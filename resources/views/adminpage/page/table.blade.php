@@ -8,7 +8,12 @@
                 <li class="breadcrumb-item"><a href="/homepage">Home</a></li>
             </ol>
         </nav>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addmeja"><i class="bi bi-plus-square"></i> Tambah Meja</button>
+        <form action="/add_table" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="text" name="no_table">
+            <button type="submit">Add</button>
+        </form>
+        {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addmeja"><i class="bi bi-plus-square"></i> Tambah Meja</button> --}}
     </div><!-- End Page Title -->
 @endsection
 @section('content')
@@ -34,6 +39,9 @@
                                         <td>{{ $table->no_table }}</td>
                                         <td>
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editmeja"><i class="ri ri-eye-fill"></i></button>
+                                        </td>
+                                        <td>
+                                            <a href="/delete_table/{{ $table->id }}">delete</a>
                                         </td>
                                     </tr>
                                     {{-- Kategori foreach End --}}

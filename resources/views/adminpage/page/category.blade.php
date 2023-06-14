@@ -8,7 +8,18 @@
                 <li class="breadcrumb-item"><a href="/homepage">Home</a></li>
             </ol>
         </nav>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addcategory"><i class="bi bi-plus-square"></i> Tambah Kategori</button>
+        <form action="/add_menu_category" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="text" name="name">
+            <select name="product_category" class="form-select" aria-label="Default select example">
+                <option disabled selected>Jenis Produk</option>
+                @foreach ($product_categories as $ct)
+                    <option value="{{ $ct->id }}">{{ $ct->name }}</option>
+                @endforeach
+            </select>
+            <button type="submit">Add</button>
+        </form>
+        {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addcategory"><i class="bi bi-plus-square"></i> Tambah Kategori</button> --}}
     </div><!-- End Page Title -->
 @endsection
 @section('content')
@@ -34,7 +45,13 @@
                                         <th scope="row">{{ $ct->id }}</th>
                                         <td>{{ $ct->name }}</td>
                                         <td>
-                                            <button type="button" value="{{ $ct->id }}" class="btn btn-primary editcategory" data-bs-toggle="modal" data-bs-target="#editcategory"><i class="ri ri-eye-fill"></i></button>
+                                            <a href="/edit_category_page/{{ $ct->id }}">edit</a>
+                                        </td>
+                                        {{-- <td>
+                                            <button type="button" value="{{ $ct->id }}" class="btn btn-primary editbtn" data-bs-toggle="modal"><i class="ri ri-eye-fill"></i></button>
+                                        </td> --}}
+                                        <td>
+                                            <a href="/delete_menu_category/{{ $ct->id }}">delete</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -51,7 +68,13 @@
     @include('adminpage.modal.category.addcategorymodal')
     @include('adminpage.modal.category.editcategorymodal')
 @endsection
-  
+ 
+@section('script')
+    <script>
+        // jqdoc
+    </script>
+@endsection
+
 {{-- @section('script')
     <script>
         $(document).ready(function () {

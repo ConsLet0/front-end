@@ -29,22 +29,37 @@
                                     <th class="shoping__product">Customer Name</th>
                                     <th>Status</th>
                                     <th>Bill</th>
+                                    <th>Order Detail</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- Start foreach product list --}}
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <h5>Neal Hotama</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        On Process
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <button type="button" class="btn btn-warning">Download Bill</button>
-                                    </td>
-                                </tr>
-                                {{-- End foreach product list --}}
+                                {{-- @dd($order->order_id) --}}
+                                {{-- @foreach ($order as $item) --}}
+                                {{-- @dd($item) --}}
+                                    {{-- Start foreach product list --}}
+                                    <tr>
+                                        <td class="shoping__cart__item">
+                                            <h5>Neal Hotama</h5>
+                                        </td>
+                                        <td class="shoping__cart__price">
+                                            @if ($order->status == 0)
+                                                On Proccess
+                                            @elseif ($order->status == 1)
+                                                Finished
+                                            @endif
+                                        </td>
+                                        <td>
+                                            ${{ $order->total_price }}
+                                        </td>
+                                        <td>
+                                            <a href="/order_detail/{{ $order->order_id }}">View Detail</a>
+                                        </td>
+                                        {{-- <td class="shoping__cart__quantity">
+                                            <button type="button" class="btn btn-warning">Download Bill</button>
+                                        </td> --}}
+                                    </tr>
+                                    {{-- End foreach product list --}}
+                                {{-- @endforeach --}}
                             </tbody>
                         </table>
                     </div>

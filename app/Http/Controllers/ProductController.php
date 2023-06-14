@@ -14,8 +14,10 @@ class ProductController extends Controller
 {
     public function show_products_onadmin(){
         $products = Product::all();
+        $product_categories = ProductCategory::all();
+        $menu_categories = MenuCategory::all();
 
-        return view('adminpage.page.products', compact('products'));
+        return view('adminpage.page.products', compact('products', 'product_categories', 'menu_categories'));
     }
 
     public function show_products($id){
@@ -89,7 +91,7 @@ class ProductController extends Controller
 
         $product->save();
         
-        return["Product Added!"];
+        return back()->with('message', 'Add Product Success!');
     }
 
     public function update_product(Request $request){
@@ -110,10 +112,10 @@ class ProductController extends Controller
         return ["Product Updated!"];
     }
 
-    public function delete_product(Request $request){
-        $product = Product::find($request->id);
+    public function delete_product($id){
+        $product = Product::find($id);
         $product->delete();
 
-        return ["Product Deleted!"];
+        return back()->with('message','Course has been deleted!');
     }
 }

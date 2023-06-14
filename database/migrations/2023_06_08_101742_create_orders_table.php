@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('order_date');
             $table->bigInteger('total_price');
             $table->integer('quantity');
+            $table->tinyInteger('status');
             // $table->unsignedBigInteger('table_id');
             // $table->foreign('table_id')->references('id')->on('tables')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

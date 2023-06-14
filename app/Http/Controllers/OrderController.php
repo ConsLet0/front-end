@@ -55,4 +55,10 @@ class OrderController extends Controller
 
         return redirect()->back()->with('success', 'Checkout Success!');
     }
+
+    public function show_ordered(){
+        $order = Order::latest()->first();
+
+        return view('userpage.page.status', compact('order'));
+    }
 }

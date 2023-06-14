@@ -27,6 +27,13 @@ class TableController extends Controller
         $table->no_table = $request->no_table;
         $table->save();
 
-        return ["Add Table Success!"];
+        return back()->with('message', 'Add Table Success!');
+    }
+
+    public function delete_table($id){
+        $table = Table::find($id);
+        $table->delete();
+
+        return back()->with('message','Course has been deleted!');
     }
 }

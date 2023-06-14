@@ -36,8 +36,34 @@
                                 <div class="form-group">
                                     <button type="button" class="btn btn-info"><i class="bi bi-search"></i> Filter</button>
                                     <button type="button" class="btn btn-warning"><i class="bi bi-list-check"></i> Semua Kategori</button>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addproducts"><i class="bi bi-plus-square"></i> Tambah Menu</button>
+                                    {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addproducts"><i class="bi bi-plus-square"></i> Tambah Menu</button> --}}
                                 </div>
+                                <form action="/add_product" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="file" id="file" name="image" />
+                                    <label for="file">choose a file</label>
+                                    <input type="text" id="name" name="name">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="description" name="description">
+                                    <label for="description">Description</label>
+                                    <input type="text" id="price" name="price">
+                                    <label for="price">Price</label>
+                                    <input type="text" id="quantity" name="quantity">
+                                    <label for="quantity">Quantity</label>
+                                    <select name="product_category" class="form-select" aria-label="Default select example">
+                                        <option disabled selected>Jenis Produk</option>
+                                        @foreach ($product_categories as $pct)
+                                            <option value="{{ $pct->id }}">{{ $pct->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <select name="menu_category" class="form-select" aria-label="Default select example">
+                                        <option disabled selected>Jenis Menu</option>
+                                        @foreach ($menu_categories as $mct)
+                                            <option value="{{ $mct->id }}">{{ $mct->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <button type="submit">Add</button>
+                                </form>
                             </div>
                         </div>
                         <!-- Table with stripped rows -->
@@ -77,8 +103,9 @@
                                         <td>
                                             <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                                 data-bs-target="#editproducts"><i class="bi bi-pencil-fill"></i></button>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                data-bs-target="#deleteproducts"><i class="bi bi-trash3"></i></button>
+                                        </td>
+                                        <td>
+                                            <a href="/delete_product/{{ $product->id }}">delete</a>
                                         </td>
                                     </tr>
                                     {{-- Products foreach end --}}

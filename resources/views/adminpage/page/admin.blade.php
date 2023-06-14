@@ -8,7 +8,14 @@
                 <li class="breadcrumb-item"><a href="/homepage">Home</a></li>
             </ol>
         </nav>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addadmin"><i class="bi bi-plus-square"></i> Tambah Admin</button>
+        <form action="/add_admin" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="text" name="name" placeholder="name">
+            <input type="email" name="email" placeholder="email">
+            <input type="password" name="password" placeholder="password">
+            <button type="submit">Add</button>
+        </form>
+        {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addadmin"><i class="bi bi-plus-square"></i> Tambah Admin</button> --}}
     </div><!-- End Page Title -->
 @endsection
 @section('content')
