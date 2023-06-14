@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Organi Shop</h2>
+                        <h2>Starsbug Coffee</h2>
                         <div class="breadcrumb__option">
                             <a href="/">Home</a>
                             <span>Status</span>
@@ -35,7 +35,7 @@
                                 {{-- Start foreach product list --}}
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <h5>Vegetable’s Package</h5>
+                                        <h5>Neal Hotama</h5>
                                     </td>
                                     <td class="shoping__cart__price">
                                         On Process

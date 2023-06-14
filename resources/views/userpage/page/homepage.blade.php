@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Organi Shop</h2>
+                        <h2>Starsbug Coffee</h2>
                         <div class="breadcrumb__option">
                             <a href="/">Home</a>
                             <span>Shop</span>
@@ -24,9 +24,8 @@
                 <div class="col-lg-10">
                     <div class="hero__item set-bg" data-setbg="{{ asset('userpage/img/hero/banner.jpg') }} ">
                         <div class="hero__text">
-                            <span>FRUIT FRESH</span>
-                            <h2>Vegetable <br />100% Organic</h2>
-                            <p>Free Pickup and Delivery Available</p>
+                            <span class="text-light">FRESH COFFEE</span>
+                            <h2 class="text-light">COFFEE <br />100% Organic</h2>
                             <a href="#" class="primary-btn">SHOP NOW</a>
                         </div>
                     </div>
@@ -37,23 +36,6 @@
 @endsection
 
 @section('content')
-    <!-- Categories Section Begin -->
-    <section class="categories">
-        <div class="container">
-            <div class="row">
-                {{-- Start foreach --}}
-                <div class="categories__slider owl-carousel">
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="{{ asset('userpage/img/categories/cat-1.jpg') }}">
-                            <h5><a href="#">Fresh Fruit</a></h5>
-                        </div>
-                    </div>
-                </div>
-                {{-- End foreach --}}
-            </div>
-        </div>
-    </section>
-    <!-- Categories Section End -->
 
     <!-- Banner Begin -->
     <div class="banner">
@@ -91,11 +73,6 @@
                         <div class="blog__item__pic">
                             <img src="{{ asset('userpage/img/blog/blog-1.jpg') }}" alt="">
                         </div>
-                        <div class="blog__item__text">
-                            <h5><a href="#">Cooking tips make cooking simple</a></h5>
-                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
-                                quaerat </p>
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
@@ -103,22 +80,12 @@
                         <div class="blog__item__pic">
                             <img src="{{ asset('userpage/img/blog/blog-2.jpg') }}" alt="">
                         </div>
-                        <div class="blog__item__text">
-                            <h5><a href="#">Cooking tips make cooking simple</a></h5>
-                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
-                                quaerat </p>
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="blog__item">
                         <div class="blog__item__pic">
                             <img src="{{ asset('userpage/img/blog/blog-3.jpg') }}" alt="">
-                        </div>
-                        <div class="blog__item__text">
-                            <h5><a href="#">Cooking tips make cooking simple</a></h5>
-                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
-                                quaerat </p>
                         </div>
                     </div>
                 </div>

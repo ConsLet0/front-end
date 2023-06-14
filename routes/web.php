@@ -46,25 +46,25 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/homepage', function () {
         return view('adminpage.page.homepage');
     })->name('admin_home');
-    Route::get('/category', [MenuCategoryController::class, 'get_all_onadmin']);
+    Route::get('/category', [MenuCategoryController::class, 'get_all_onadmin'])->name('admin_category');
     Route::post('/add_menu_category', [MenuCategoryController::class, 'add_menu_category']);
     Route::post('/edit_menu_category', [MenuCategoryController::class, 'edit_menu_category']);
     Route::post('/delete_menu_category/{id}', [MenuCategoryController::class, 'delete_menu_category']);
-    Route::get('/products', [ProductController::class, 'show_products_onadmin']);
-    Route::get('/table', [TableController::class, 'show_tables_onadmin']);
-    Route::get('/admin', [UserController::class, 'show_all_admin']);
-    Route::post('/add_admin', [UserController::class, 'add_admin']);
+    Route::get('/products', [ProductController::class, 'show_products_onadmin'])->name('admin_product');
+    Route::get('/table', [TableController::class, 'show_tables_onadmin'])->name('admin_table');
+    Route::get('/admin', [UserController::class, 'show_all_admin'])->name('admin_admin');
+    Route::post('/add_admin', [UserController::class, 'add_admin'])->name('admin_admin');
 
     Route::get('/order', function () {
-        return view('adminpage.page.order');
+        return view('adminpage.page.order')->name('admin_order');
     });
     
     Route::get('/detailorder/incoming', function () {
-        return view('adminpage.page.detailorder-incoming');
+        return view('adminpage.page.detailorder-incoming')->name('admin_order');
     });
     
     Route::get('/detailorder/all', function () {
-        return view('adminpage.page.detailorder-allorder');
+        return view('adminpage.page.detailorder-allorder')->name('admin_order');
     });
     
     // Route::get('/admin', function () {

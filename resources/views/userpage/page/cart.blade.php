@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Organi Shop</h2>
+                        <h2>Starsbug Coffee</h2>
                         <div class="breadcrumb__option">
                             <a href="/">Home</a>
                             <span>Shop</span>
@@ -17,21 +17,20 @@
     </section>
 @endsection
 @section('content')
-@if (empty($cart) || count($cart) == 0)
-    <div class="warn">
-        <h3>No Data</h3>
-    </div>
-
-@else
     <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="shoping__cart__table">
-                        
-                        <?php $total_price  = 0; ?>
-                        <?php $total_quantity  = 0; ?>
+                    @if (empty($cart) || count($cart) == 0)
+                        <div class="warn">
+                            <h3>No Data</h3>
+                        </div>
+                    @else
+                        <div class="shoping__cart__table">
+
+                            <?php $total_price = 0; ?>
+                            <?php $total_quantity = 0; ?>
                             <table>
                                 <thead>
                                     <tr>
@@ -45,16 +44,16 @@
                                 <tbody>
                                     @foreach ($cart as $ct => $val)
                                         <?php $price = $val['price']; ?>
-                                        <?php $p = number_format($val['price'], 0, ",", "."); ?>
-                                        <?php 
-                                            $subprice = $p * $val['quantity']; 
-
-                                            $sp = number_format($subprice, 0, ",", ".");
+                                        <?php $p = number_format($val['price'], 0, ',', '.'); ?>
+                                        <?php
+                                        $subprice = $p * $val['quantity'];
+                                        
+                                        $sp = number_format($subprice, 0, ',', '.');
                                         ?>
                                         {{-- Start foreach product list --}}
                                         <tr>
                                             <td class="shoping__cart__item">
-                                                <img src="{{ url('product/'. $val['image']) }}" alt="">
+                                                <img src="{{ url('product/' . $val['image']) }}" alt="">
                                                 <h5>{{ $val['name'] }}</h5>
                                             </td>
                                             <td class="shoping__cart__price">
@@ -80,18 +79,19 @@
                                         <?php $total_price += $sp; ?>
                                         <?php $total_quantity += $val['quantity']; ?>
                                     @endforeach
-                                    <?php $tp = number_format($total_price, 0, ",", "."); ?>
+                                    <?php $tp = number_format($total_price, 0, ',', '.'); ?>
                                 </tbody>
                             </table>
-                        
-                    </div>
+
+                        </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
                         <a href="/product" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                        <a href="#" onclick="refreshPage()" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                        <a href="#" onclick="refreshPage()" class="primary-btn cart-btn cart-btn-right"><span
+                                class="icon_loading"></span>
                             Upadate Cart</a>
                     </div>
                 </div>

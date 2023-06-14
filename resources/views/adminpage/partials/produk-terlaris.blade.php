@@ -15,41 +15,15 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {{-- Start foreach produk terlaris --}}
                     <tr>
                         <th scope="row"><a href="#"><img src="{{ asset('adminpage/img/product-1.jpg') }}"
                                     alt=""></a></th>
-                        <td>Product Name</td>
+                        <td>Cappucino</td>
                         <td>$64</td>
                         <td class="fw-bold">124</td>
                     </tr>
-                    <tr>
-                        <th scope="row"><a href="#"><img src="{{ asset('adminpage/img/product-2.jpg') }}"
-                                    alt=""></a></th>
-                        <td>Product Name</td>
-                        <td>$46</td>
-                        <td class="fw-bold">98</td>
-                    </tr>
-                    <tr>
-                        <th scope="row"><a href="#"><img src="{{ asset('adminpage/img/product-3.jpg') }}"
-                                    alt=""></a></th>
-                        <td>Product Name</td>
-                        <td>$59</td>
-                        <td class="fw-bold">74</td>
-                    </tr>
-                    <tr>
-                        <th scope="row"><a href="#"><img src="{{ asset('adminpage/img/product-4.jpg') }}"
-                                    alt=""></a></th>
-                        <td>Product Name</td>
-                        <td>$32</td>
-                        <td class="fw-bold">63</td>
-                    </tr>
-                    <tr>
-                        <th scope="row"><a href="#"><img src="{{ asset('adminpage/img/product-5.jpg') }}"
-                                    alt=""></a></th>
-                        <td>Product Name</td>
-                        <td>$79</td>
-                        <td class="fw-bold">41</td>
-                    </tr>
+                    {{-- End foreach produk terlaris --}}
                 </tbody>
             </table>
 

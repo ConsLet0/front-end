@@ -94,5 +94,4 @@
     </section>
     @include('adminpage.modal.products.addproductsmodal')
     @include('adminpage.modal.products.editproductsmodal')
-    @include('adminpage.modal.products.deleteproductsmodal')
 @endsection
