@@ -14,6 +14,27 @@
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
+                @if (session('erroradd'))
+                    <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                        {{ session('erroradd') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @elseif(session('successadd'))
+                    <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                        {{ session('successadd') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @elseif(session('successedit'))
+                    <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                        {{ session('successedit') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @elseif(session('successdelete'))
+                    <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                        {{ session('successdelete') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-body">
                         <div class="row mb-3">
@@ -35,35 +56,11 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <button type="button" class="btn btn-info"><i class="bi bi-search"></i> Filter</button>
-                                    <button type="button" class="btn btn-warning"><i class="bi bi-list-check"></i> Semua Kategori</button>
-                                    {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addproducts"><i class="bi bi-plus-square"></i> Tambah Menu</button> --}}
+                                    <button type="button" class="btn btn-warning"><i class="bi bi-list-check"></i> Semua
+                                        Kategori</button>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#addproducts"><i class="bi bi-plus-square"></i> Tambah Menu</button>
                                 </div>
-                                <form action="/add_product" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <input type="file" id="file" name="image" />
-                                    <label for="file">choose a file</label>
-                                    <input type="text" id="name" name="name">
-                                    <label for="name">Name</label>
-                                    <input type="text" id="description" name="description">
-                                    <label for="description">Description</label>
-                                    <input type="text" id="price" name="price">
-                                    <label for="price">Price</label>
-                                    <input type="text" id="quantity" name="quantity">
-                                    <label for="quantity">Quantity</label>
-                                    <select name="product_category" class="form-select" aria-label="Default select example">
-                                        <option disabled selected>Jenis Produk</option>
-                                        @foreach ($product_categories as $pct)
-                                            <option value="{{ $pct->id }}">{{ $pct->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <select name="menu_category" class="form-select" aria-label="Default select example">
-                                        <option disabled selected>Jenis Menu</option>
-                                        @foreach ($menu_categories as $mct)
-                                            <option value="{{ $mct->id }}">{{ $mct->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <button type="submit">Add</button>
-                                </form>
                             </div>
                         </div>
                         <!-- Table with stripped rows -->
@@ -76,7 +73,6 @@
                                     <th scope="col">Foto</th>
                                     <th scope="col">Harga</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Kategori</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -88,24 +84,28 @@
                                         <td>{{ $product->name }}</td>
                                         <td>{{ $product->product_category->name }}</td>
                                         <td>
-                                            <img src="{{ asset('product/'.$product->image) }}" width="60px" alt="">
+                                            <img src="{{ asset('product/' . $product->image) }}" width="60px"
+                                                alt="">
                                         </td>
                                         <td>${{ $product->price }}</td>
                                         <td>
                                             {{-- Looping Status --}}
-                                            <strong class="text-success">Tersedia</strong>
-                                            <strong class="text-danger">Habis</strong>
+                                            @if ($product->status == 1)
+                                                <strong class="text-success">Tersedia</strong>
+                                            @elseif ($product->status == 2)
+                                                <strong class="text-danger">Habis</strong>
+                                            @endif
                                         </td>
                                         <td>
-                                            {{-- Looping Kategori --}}
-                                            <strong class="text-primary">{{ $product->menu_category->name }}</strong>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                                data-bs-target="#editproducts"><i class="bi bi-pencil-fill"></i></button>
-                                        </td>
-                                        <td>
-                                            <a href="/delete_product/{{ $product->id }}">delete</a>
+                                            <a href="/edit_product_page/{{ $product->id }}">
+                                                <button type="button" class="btn btn-primary"><i
+                                                        class="bi bi-eye-fill"></i></button>
+                                            </a>
+                                            <a href="/delete_product/{{ $product->id }}"
+                                                onclick="event.preventDefault(); if(confirm('Apakah Anda yakin ingin menghapus kategori ini?')) { window.location.href = '{{ url('/delete_product/' . $product->id) }}'; }">
+                                                <button type="button" class="btn btn-danger"><i
+                                                        class="bi bi-trash-fill"></i></button>
+                                            </a>
                                         </td>
                                     </tr>
                                     {{-- Products foreach end --}}
@@ -120,5 +120,4 @@
         </div>
     </section>
     @include('adminpage.modal.products.addproductsmodal')
-    @include('adminpage.modal.products.editproductsmodal')
 @endsection

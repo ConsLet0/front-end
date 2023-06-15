@@ -15,7 +15,6 @@ class UserController extends Controller
 {
     public function show_all_admin(){
         $admins = User::where('role', 'admin')->orderBy('created_at', 'desc')->get();
-
         return view('adminpage.page.admin', compact('admins'));
     }
     public function signin(Request $request, User $user)

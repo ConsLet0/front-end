@@ -28,11 +28,11 @@
                             <span>Categories</span>
                         </div>
                         <ul>
-                                @foreach ($menu_category as $mct)
+                            @foreach ($menu_category as $mct)
                                 {{-- Start foreach category --}}
-                                    <li><a href="/menu/{{ $mct->id }}">{{ $mct->name }}</a></li>
+                                <li><a href="/menu/{{ $mct->id }}">{{ $mct->name }}</a></li>
                                 {{-- End foreach category --}}
-                                @endforeach
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -58,29 +58,31 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
                         @foreach ($products as $product)
-                            <div class="row">
-                                {{-- Start foreach product --}}
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="product__item">
-                                        <div class="product__item__pic set-bg" data-setbg="{{ asset('product/'.$product->image) }}">
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="/product_detail/{{ $product->id }}"><i class="fa fa-info"></i></a></li>
-                                                <form action="{{ route('add_to_cart', ['id' => $product->id]) }}">
-                                                    <li><button type="submit"><i class="fa fa-shopping-cart"></i></button></li>
-                                                    <input type="number" value="1" name="quantity">
-                                                </form>
-                                            </ul>
-                                        </div>
-                                        <div class="product__item__text">
-                                            <h6><a href="#">{{ $product->name }}</a></h6>
-                                            <h5>${{ $product->price }}</h5>
-                                        </div>
+                            {{-- Start foreach product --}}
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg"
+                                        data-setbg="{{ asset('product/' . $product->image) }}">
+                                        <ul class="product__item__pic__hover">
+                                            <li><a href="/product_detail/{{ $product->id }}"><i class="fa fa-info"></i></a>
+                                            </li>
+                                            <form action="{{ route('add_to_cart', ['id' => $product->id]) }}">
+                                                <li><button type="submit"><i class="fa fa-shopping-cart"></i></button></li>
+                                                <input type="number" value="1" name="quantity">
+                                            </form>
+                                        </ul>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <h6><a href="#">{{ $product->name }}</a></h6>
+                                        <h5>${{ $product->price }}</h5>
                                     </div>
                                 </div>
-                                {{-- End foreach product --}}
                             </div>
+                            {{-- End foreach product --}}
                         @endforeach
+                    </div>
                     <div class="product__pagination">
                         <a href="#">1</a>
                         <a href="#">2</a>

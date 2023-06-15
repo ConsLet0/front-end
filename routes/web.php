@@ -54,6 +54,8 @@ Route::middleware(['admin'])->group(function () {
 
     Route::get('/products', [ProductController::class, 'show_products_onadmin'])->name('admin_product');
     Route::post('/add_product', [ProductController::class, 'add_product']);
+    Route::get('/edit_product_page/{id}', [ProductController::class, 'edit_product_page']);
+    Route::post('/edit_product/{id}', [ProductController::class, 'update_product']);
     Route::get('/delete_product/{id}', [ProductController::class, 'delete_product']);
 
     Route::get('/table', [TableController::class, 'show_tables_onadmin'])->name('admin_table');

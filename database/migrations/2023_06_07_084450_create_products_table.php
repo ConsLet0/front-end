@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->bigInteger('price');
-            $table->integer('quantity');
             $table->string('image');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

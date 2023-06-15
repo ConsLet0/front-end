@@ -20,6 +20,14 @@ class ProductController extends Controller
         return view('adminpage.page.products', compact('products', 'product_categories', 'menu_categories'));
     }
 
+    public function edit_product_page($id){
+        $products = Product::find($id);
+        $product_categories = ProductCategory::all();
+        $menu_categories = MenuCategory::all();
+
+        return view('adminpage.page.editproduct', compact('products', 'product_categories', 'menu_categories'));
+    }
+
     public function show_products($id){
         $category = ProductCategory::find($id);
         $products = Product::where('product_category_id', $category->id)->orderBy('created_at', 'desc')->get();
@@ -58,12 +66,12 @@ class ProductController extends Controller
             'name' => 'required|max:50',
             'description' => 'required|max:120',
             'price' => 'required',
-            'quantity' => 'required',
+            'status' => 'required',
             'image' => 'required|image|mimes:jpg,png'
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-            return back()->withErrors($validator);
+            return back()->with('erroradd', 'Failed to add new product !');
         }
 
         $product = new Product();
@@ -71,8 +79,8 @@ class ProductController extends Controller
         $product->menu_category_id = $request->menu_category;
         $product->name = $request->name;
         $product->description = $request->description;
+        $product->status = $request->status;
         $product->price = $request->price;
-        $product->quantity = $request->quantity;
 
         $file = $request->file('image');
 
@@ -91,15 +99,15 @@ class ProductController extends Controller
 
         $product->save();
         
-        return back()->with('message', 'Add Product Success!');
+        return back()->with('successadd', 'Add Product Success!');
     }
 
     public function update_product(Request $request){
         $product = Product::find($request->id);
         $product->name = $request->name != null ? $request->name : $product->name;
         $product->description = $request->description != null ? $request->description : $product->description;
-        $product->quantity = $request->quantity != null ? $request->quantity : $product->quantity;
         $product->price = $request->price != null ? $request->price : $product->price;
+        $product->status = $request->status != null ? $request->status : $product->status;
         $product->product_category_id = $request->product_category_id != null ? $request->product_category_id : $product->product_category_id;
         $product->menu_category_id = $request->menu_category_id != null ? $request->menu_category_id : $product->menu_category_id;
         if(isset($file)){
@@ -109,13 +117,13 @@ class ProductController extends Controller
         }
         $product->save();
         
-        return ["Product Updated!"];
+        return redirect('/products')->with('successedit', 'Product has been updated');
     }
 
     public function delete_product($id){
         $product = Product::find($id);
         $product->delete();
 
-        return back()->with('message','Course has been deleted!');
+        return back()->with('successdelete','Product has been deleted!');
     }
 }

@@ -79,5 +79,4 @@
         </div>
     </section>
     @include('adminpage.modal.meja.addmejamodal')
-    @include('adminpage.modal.meja.editmejamodal')
 @endsection
