@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Table extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'no_table',
+        // kolom lain yang ingin diisi secara massal
+    ];
+
 }

@@ -49,7 +49,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/category', [MenuCategoryController::class, 'get_all_onadmin'])->name('admin_category');
     Route::get('/edit_category_page/{id}', [MenuCategoryController::class, 'edit_category_page']);
     Route::post('/add_menu_category', [MenuCategoryController::class, 'add_menu_category']);
-    Route::post('/edit_menu_category', [MenuCategoryController::class, 'edit_menu_category']);
+    Route::post('/edit_menu_category/{id}', [MenuCategoryController::class, 'edit_menu_category'])->name('edit_menu_category');
     Route::get('/delete_menu_category/{id}', [MenuCategoryController::class, 'delete_menu_category']);
 
     Route::get('/products', [ProductController::class, 'show_products_onadmin'])->name('admin_product');
@@ -58,6 +58,8 @@ Route::middleware(['admin'])->group(function () {
 
     Route::get('/table', [TableController::class, 'show_tables_onadmin'])->name('admin_table');
     Route::post('/add_table', [TableController::class, 'add_table']);
+    Route::get('/edit_table/{id}', [TableController::class, 'edit_table_page']);
+    Route::post('/edit_table/{id}', [TableController::class, 'edit_table']);
     Route::get('/delete_table/{id}', [TableController::class, 'delete_table']);
 
     Route::get('/admin', [UserController::class, 'show_all_admin'])->name('admin_admin');

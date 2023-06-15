@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('tables', function (Blueprint $table) {
             $table->id();
-            $table->string('no_table');
+            $table->integer('no_table');
             $table->timestamps();
         });
     }

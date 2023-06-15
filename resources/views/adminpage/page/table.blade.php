@@ -8,18 +8,36 @@
                 <li class="breadcrumb-item"><a href="/homepage">Home</a></li>
             </ol>
         </nav>
-        <form action="/add_table" method="POST" enctype="multipart/form-data">
-            @csrf
-            <input type="text" name="no_table">
-            <button type="submit">Add</button>
-        </form>
-        {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addmeja"><i class="bi bi-plus-square"></i> Tambah Meja</button> --}}
     </div><!-- End Page Title -->
 @endsection
 @section('content')
     <section class="section">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addmeja"><i
+            class="bi bi-plus-square"></i> Tambah Meja</button>
         <div class="row">
             <div class="col-lg-12">
+                @if (session('erroradd'))
+                    <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                        {{ session('erroradd') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @elseif(session('successadd'))
+                    <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                        {{ session('successadd') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @elseif(session('editsuccess'))
+                    <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                        {{ session('editsuccess') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @elseif(session('deletesuccess'))
+                    <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                        {{ session('deletesuccess') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+                
                 <div class="card">
                     <div class="card-body">
                         <!-- Table with stripped rows -->
@@ -38,10 +56,15 @@
                                         <th scope="row">{{ $table->id }}</th>
                                         <td>{{ $table->no_table }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editmeja"><i class="ri ri-eye-fill"></i></button>
-                                        </td>
-                                        <td>
-                                            <a href="/delete_table/{{ $table->id }}">delete</a>
+                                            <a href="/edit_table/{{ $table->id }}">
+                                                <button type="button" class="btn btn-primary"><i
+                                                        class="bi bi-eye-fill"></i></button>
+                                            </a>
+                                            <a href="/delete_table/{{ $table->id }}"
+                                                onclick="event.preventDefault(); if(confirm('Apakah Anda yakin ingin menghapus meja ini?')) { window.location.href = '{{ url('/delete_table/' . $table->id) }}'; }">
+                                                <button type="button" class="btn btn-danger"><i
+                                                        class="bi bi-trash-fill"></i></button>
+                                            </a>
                                         </td>
                                     </tr>
                                     {{-- Kategori foreach End --}}
@@ -58,4 +81,3 @@
     @include('adminpage.modal.meja.addmejamodal')
     @include('adminpage.modal.meja.editmejamodal')
 @endsection
-  

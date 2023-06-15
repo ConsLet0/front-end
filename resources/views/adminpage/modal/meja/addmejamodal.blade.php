@@ -6,21 +6,22 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="formAddkategori" class="form-kategori" method="POST" enctype="multipart/form-data">
+                <form action="/add_table" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="number" name="name" id="name" class="form-control" placeholder="Masukan Nama Kategori !">
+                                <input type="number" name="no_table" class="form-control"
+                                    placeholder="Masukan Nomor Meja !">
                                 <span class="text-danger error-text name_error" role="alert"></span>
                             </div>
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-success">Simpan</button>
+                    </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                <button type="button" class="btn btn-success">Simpan</button>
-            </div>
         </div>
-    </div>
-</div><!-- End Vertically centered Modal-->
+    </div><!-- End Vertically centered Modal-->
