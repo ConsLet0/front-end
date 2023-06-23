@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Order;
 use App\Models\Table;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,12 +13,21 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $table = 'orders';
-    protected $primaryKey = 'order_id';
-
     protected $fillable = [
-        'order_date', 'total_price', 'quantity', 'status'
+        'order_date', 'name', 'total_price', 'quantity', 'status', 'payment_method_id', 'table_id'
     ];
+
+    public function order_detail(){
+        return $this->hasMany(OrderDetail::class);
+    }
+
+    public function payment_method(){
+        return $this->hasMany(OrderDetail::class);
+    }
+
+    public function table(){
+        return $this->belongsTo(Table::class);
+    }
 
     public static function add_order(Request $request){
         $cart = session('cart');
@@ -31,13 +41,15 @@ class Order extends Model
         }
         $data = Order::create([
             'order_date' => date('Y-m-d'),
+            'name' => $request->name,
             'total_price' => $total_price,
             'quantity' => $total_quantity,
             'status' => 0,
-            // 'table_id' => $request->table_id,
+            'payment_method_id' => $request->payment_method_id,
+            'table_id' => $request->table_id,
         ]);
         // dd($data);
 
-        return $data->order_id;
+        return $data->id;
     }
 }

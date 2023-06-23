@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Table;
 use App\Models\Product;
+use PDF;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
+use App\Models\PaymentMethod;
 use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
@@ -27,9 +29,11 @@ class OrderController extends Controller
 
     public function view_cart(){
         $cart = session('cart');
+        $payment_method = PaymentMethod::orderBy('id', 'asc')->get();
+        $table = Table::orderBy('id', 'asc')->get();
         // $table = Table::orderBy('no_table', 'asc')->get();
 
-        return view('userpage.page.cart')->with('cart', $cart);
+        return view('userpage.page.cart', compact('payment_method', 'table'))->with('cart', $cart);
     }
 
     public function remove_cart($product_id){
@@ -60,5 +64,13 @@ class OrderController extends Controller
         $order = Order::latest()->first();
 
         return view('userpage.page.status', compact('order'));
+    }
+
+    public function download_bill($id){
+        $bill = Order::find($id);
+        $detail = OrderDetail::where('order_id', $id)->get();
+        $pdf = PDF::loadview('adminpage.page.bill', compact('bill', 'detail'))->setPaper('a4', 'landscape');
+
+        return $pdf->download('bill.pdf');
     }
 }

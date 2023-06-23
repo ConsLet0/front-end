@@ -18,6 +18,7 @@
 @endsection
 @section('content')
     <!-- Product Details Section Begin -->
+    {{-- @dd($product) --}}
     <section class="product-details spad">
         <div class="container">
             <div class="row">

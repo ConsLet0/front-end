@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\TableController;
 use App\Http\Controllers\ProductController;
@@ -34,7 +35,6 @@ Route::get('/contact', function () {
     return view('userpage.page.contact');
 });
 Route::get('/status', [OrderController::class, 'show_ordered']);
-Route::get('/order_detail/{id}', [OrderDetailController::class, 'order_detail']);
 
 // Adminpage
 Route::get('/login', function () {
@@ -42,9 +42,8 @@ Route::get('/login', function () {
 });
 Route::post('/login', [UserController::class, 'signin']);
 Route::middleware(['admin'])->group(function () {
-    Route::get('/homepage', function () {
-        return view('adminpage.page.homepage');
-    })->name('admin_home');
+    Route::get('/homepage', [AdminController::class, 'dashboard'])->name('admin_home');
+    Route::get('/download_bill/{id}', [OrderController::class, 'download_bill'])->name('download_bill');
 
     Route::get('/category', [MenuCategoryController::class, 'get_all_onadmin'])->name('admin_category');
     Route::get('/edit_category_page/{id}', [MenuCategoryController::class, 'edit_category_page']);
@@ -67,17 +66,14 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin', [UserController::class, 'show_all_admin'])->name('admin_admin');
     Route::post('/add_admin', [UserController::class, 'add_admin']);
 
-    Route::get('/order', function () {
-        return view('adminpage.page.order')->name('admin_order');
-    });
+   Route::get('/order', [AdminController::class, 'order']);
+   Route::get('/order_detail/{id}', [AdminController::class, 'order_detail']);
+   Route::post('/finish_order', [AdminController::class, 'finish_order']);
+   Route::post('/cancel_order', [AdminController::class, 'cancel_order']);
     
-    Route::get('/detailorder/incoming', function () {
-        return view('adminpage.page.detailorder-incoming')->name('admin_order');
-    });
-    
-    Route::get('/detailorder/all', function () {
-        return view('adminpage.page.detailorder-allorder')->name('admin_order');
-    });
+    // Route::get('/detailorder/all', function () {
+    //     return view('adminpage.page.detailorder-allorder')->name('admin_order');
+    // });
     
     // Route::get('/admin', function () {
     //     return view('adminpage.page.admin');

@@ -57,16 +57,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Brandon Jacob</td>
-                        <td>1</td>
-                        <td>$64</td>
-                        <td>CASH</td>
-                        <td>2023-05-14 23:27:31</td>
-                        <td><a href=""><span class="badge bg-success">Download Bill</span></a></td>
-                    </tr>
-                    <tr>
+                    @foreach ($laporan_penjualan as $order)
+                        <tr>
+                            <th scope="row">{{ $order->id }}</th>
+                            <td>{{ $order->name }}</td>
+                            <td>1</td>
+                            <td>${{ $order->total_price }}</td>
+                            @if ($order->payment_method_id == 1)
+                                <td>CASH</td>
+                            @elseif ($order->payment_method_id == 2)
+                                <td>DEBIT</td>
+                            @endif
+                            <td>{{ $order->created_at }}</td>
+                            <td><a href="/download_bill/{{ $order->id }}"><span class="badge bg-success">Download Bill</span></a></td>
+                        </tr>
+                    @endforeach
+                    {{-- <tr>
                         <th scope="row">2</th>
                         <td>Bridie Kessler</td>
                         <td>2</td>
@@ -74,7 +80,7 @@
                         <td>CASHLESS</td>
                         <td>2023-03-13 15:32:57</td>
                         <td><a href=""><span class="badge bg-success">Download Bill</span></a></td>
-                    </tr>
+                    </tr> --}}
                 </tbody>
             </table>
 

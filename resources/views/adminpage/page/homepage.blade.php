@@ -29,7 +29,7 @@
                                         <i class="bi bi-currency-dollar"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>$3,264</h6>
+                                        <h6>${{ $total_pendapatan }}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                                         <i class="bi bi-cart"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>145</h6>
+                                        <h6>{{ $total_produk_terjual }}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -70,7 +70,7 @@
                                         <i class="bi bi-people"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>1244</h6>
+                                        <h6>{{ $total_pelanggan }}</h6>
                                     </div>
                                 </div>
 

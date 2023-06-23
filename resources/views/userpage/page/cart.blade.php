@@ -102,7 +102,22 @@
                             <li>Subtotal <span>${{ $tp }}</span></li>
                             <li>Total <span>${{ $tp }}</span></li>
                         </ul>
-                        <a href="{{ route('checkout') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        <form action="{{ route('checkout') }}" enctype="multipart/form-data">
+                            <input type="text" name="name" placeholder="Input Your Name">
+                            <select name="payment_method_id" class="form-select" aria-label="Default select example">
+                                <option disabled selected>Payment Method</option>
+                                @foreach ($payment_method as $pm)
+                                    <option value="{{ $pm->id }}">{{ $pm->name }}</option>
+                                @endforeach
+                            </select>
+                            <select name="table_id" class="form-select" aria-label="Default select example">
+                                <option disabled selected>No_Table</option>
+                                @foreach ($table as $tbl)
+                                    <option value="{{ $tbl->id }}">{{ $tbl->no_table }}</option>
+                                @endforeach
+                            </select>
+                            <button type="submit">PROCEED TO CHECKOUT</button>
+                        </form>
                     </div>
                 </div>
             </div>

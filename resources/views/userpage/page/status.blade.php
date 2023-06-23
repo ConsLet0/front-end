@@ -39,7 +39,7 @@
                                     {{-- Start foreach product list --}}
                                     <tr>
                                         <td class="shoping__cart__item">
-                                            <h5>Neal Hotama</h5>
+                                            <h5>{{ $order->name }}</h5>
                                         </td>
                                         <td class="shoping__cart__price">
                                             @if ($order->status == 0)
@@ -52,7 +52,7 @@
                                             ${{ $order->total_price }}
                                         </td>
                                         <td>
-                                            <a href="/order_detail/{{ $order->order_id }}">View Detail</a>
+                                            <a href="/download_bill/{{ $order->id }}"><span class="badge bg-success">Download Bill</span></a>
                                         </td>
                                         {{-- <td class="shoping__cart__quantity">
                                             <button type="button" class="btn btn-warning">Download Bill</button>

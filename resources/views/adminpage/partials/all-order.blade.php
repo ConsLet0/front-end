@@ -11,24 +11,26 @@
             </tr>
         </thead>
         <tbody>
-            {{-- Kategori foreach start --}}
-            <tr>
-                <th scope="row">1</th>
-                <td>
-                    <button type="button" class="btn btn-success" disabled>Pesanan
-                        Selesai</button>
-                    <p>05-Jun-2023 22:08</p>
-                </td>
-                <th scope="row">Jonathan Frizi</th>
-                <th scope="row">1</th>
-                <td>
-                    <a href="/detailorder/all"><button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#editcategory"><i class="ri ri-eye-line"></i></button></a>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                        data-bs-target="#deletecategory"><i class="bi bi-trash3"></i></button>
-                </td>
-            </tr>
-            {{-- Kategori foreach End --}}
+            @foreach ($orders as $order)
+                {{-- Kategori foreach start --}}
+                <tr>
+                    <th scope="row">{{ $order->order_id }}</th>
+                    <td>
+                        <button type="button" class="btn btn-success" disabled>Pesanan
+                            Selesai</button>
+                        <p>05-Jun-2023 22:08</p>
+                    </td>
+                    <th scope="row">{{ $order->name }}</th>
+                    <th scope="row">{{ $order->table_id }}</th>
+                    <td>
+                        <a href="/detailorder/all"><button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#editcategory"><i class="ri ri-eye-line"></i></button></a>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#deletecategory"><i class="bi bi-trash3"></i></button>
+                    </td>
+                </tr>
+                {{-- Kategori foreach End --}}
+            @endforeach
         </tbody>
     </table>
     <!-- End Table with stripped rows -->

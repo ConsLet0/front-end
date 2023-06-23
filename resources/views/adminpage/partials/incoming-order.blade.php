@@ -11,24 +11,35 @@
             </tr>
         </thead>
         <tbody>
-            {{-- Kategori foreach start --}}
-            <tr>
-                <th scope="row">1</th>
-                <td>
-                    <button type="button" class="btn btn-danger" disabled>Pesanan
-                        Masuk</button>
-                    <p>05-Jun-2023 22:08</p>
-                </td>
-                <th scope="row">Jonathan Frizi</th>
-                <th scope="row">1</th>
-                <td>
-                    <a href="/detailorder/incoming"><button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#editcategory"><i class="ri ri-eye-line"></i></button></a>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                        data-bs-target="#deletecategory"><i class="bi bi-trash3"></i></button>
-                </td>
-            </tr>
-            {{-- Kategori foreach End --}}
+            @foreach ($orders as $order)
+            {{-- @dd($order) --}}
+                {{-- Kategori foreach start --}}
+                <tr>
+                    <th scope="row">{{ $order->id }}</th>
+                    <td>
+                        @if ($order->status == 0)
+                            <button type="button" class="btn btn-danger" disabled>Pesanan
+                                Masuk</button>
+                            <p>{{ $order->created_at }}</p>
+                        @elseif ($order->status == 1)
+                            <button type="button" class="btn btn-danger" disabled>Pesanan Telah Dihidangkan</button>
+                            <p>{{ $order->updated_at }}</p>
+                        @elseif ($order->status == 2)
+                            <button type="button" class="btn btn-danger" disabled>Pesanan Dibatalkan</button>
+                            <p>{{ $order->updated_at }}</p>
+                        @endif
+                    </td>
+                    <th scope="row">{{ $order->name }}</th>
+                    <th scope="row">{{ $order->table->no_table }}</th>
+                    <td>
+                        <a href="/order_detail/{{ $order->id }}"><button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#editcategory"><i class="ri ri-eye-line"></i></button></a>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#deletecategory"><i class="bi bi-trash3"></i></button>
+                    </td>
+                </tr>
+                {{-- Kategori foreach End --}}
+            @endforeach
         </tbody>
     </table>
     <!-- End Table with stripped rows -->

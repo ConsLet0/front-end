@@ -12,4 +12,8 @@ class Table extends Model
         // kolom lain yang ingin diisi secara massal
     ];
 
+    public function order(){
+        return $this->hasMany(Order::class);
+    }
+
 }
