@@ -61,7 +61,7 @@
                         <tr>
                             <th scope="row">{{ $order->id }}</th>
                             <td>{{ $order->name }}</td>
-                            <td>1</td>
+                            <td>{{ $order->table->no_table }}</td>
                             <td>${{ $order->total_price }}</td>
                             @if ($order->payment_method_id == 1)
                                 <td>CASH</td>
