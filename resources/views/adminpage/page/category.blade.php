@@ -58,11 +58,7 @@
                                         <th scope="row">{{ $ct->id }}</th>
                                         <td>{{ $ct->name }}</td>
                                         <td>
-                                            @foreach ($product_categories as $product)
-                                                @if ($product->menu_category_id == $ct->id)
-                                                    <td>{{ $product->name }}</td>
-                                                @endif
-                                            @endforeach
+                                            {{ $ct->product_category->name }}
                                         </td>
                                         <td>
                                             <a href="/edit_category_page/{{ $ct->id }}">
@@ -75,7 +71,6 @@
                                         </td>
                                     </tr>
                                 @endforeach
-
                                 {{-- Kategori foreach End --}}
                             </tbody>
                         </table>

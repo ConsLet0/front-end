@@ -2,26 +2,6 @@
 <div id="preloder">
     <div class="loader"></div>
 </div>
-
-<!-- Humberger Begin -->
-{{-- <div class="humberger__menu__overlay"></div>
-<div class="humberger__menu__wrapper">
-    <div class="humberger__menu__logo">
-        <a href="/"><img src="{{ asset('userpage/img/logo.png') }}" alt=""></a>
-    </div>
-    <nav class="humberger__menu__nav mobile-menu">
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/food">Food</a></li>
-            <li><a href="/drink">Drink</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/status">Status</a></li>
-        </ul>
-    </nav>
-    <div id="mobile-menu-wrap"></div>
-</div> --}}
-<!-- Humberger End -->
-
 <!-- Header Section Begin -->
 <header class="header">
     <div class="container">

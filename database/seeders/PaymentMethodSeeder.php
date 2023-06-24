@@ -17,6 +17,7 @@ class PaymentMethodSeeder extends Seeder
     {
         DB::table('payment_methods')->insert([
             ['name' => 'Cash'],
+            ['name' => 'Cashless'],
             ['name' => 'Debit'],
         ]);
     }

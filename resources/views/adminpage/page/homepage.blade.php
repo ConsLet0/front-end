@@ -64,7 +64,6 @@
 
                             <div class="card-body">
                                 <h5 class="card-title">Total Pelanggan</h5>
-
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                         <i class="bi bi-people"></i>
@@ -80,7 +79,6 @@
                     </div><!-- End Customers Card -->
                     
                     @include('adminpage.partials.laporan-penjualan')
-                    @include('adminpage.partials.produk-terlaris')
                 </div>
             </div><!-- End Left side columns -->
         </div>

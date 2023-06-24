@@ -63,7 +63,7 @@ class UserController extends Controller
 
         if($validator -> fails())
         {
-            return back()->withErrors($validator);
+            return back()->with('erroradd', 'Failed to add New Admin !');
         }
 
         User::create([
@@ -72,6 +72,7 @@ class UserController extends Controller
             'password' => Hash::make($request['password']),
         ]);
         
-        return redirect()->back()->with('message','New Admin Added');
+        return redirect()->back()->with('successadd','New Admin Added');
     }
+
 }

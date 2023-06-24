@@ -20,6 +20,11 @@
     <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
         <div class="container">
+            @if(session('successcheckout'))
+                <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                    {{ session('successcheckout') }}
+                </div>
+            @endif
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__table">
@@ -52,7 +57,9 @@
                                             ${{ $order->total_price }}
                                         </td>
                                         <td>
-                                            <a href="/download_bill/{{ $order->id }}"><span class="badge bg-success">Download Bill</span></a>
+                                            <a href="/download_bill/{{ $order->id }}">
+                                                <button type="button" class="btn btn-warning">Unduh Struk</button>
+                                            </a>
                                         </td>
                                         {{-- <td class="shoping__cart__quantity">
                                             <button type="button" class="btn btn-warning">Download Bill</button>

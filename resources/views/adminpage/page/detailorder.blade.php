@@ -22,65 +22,71 @@
                         {{-- @dd($order->name) --}}
 
                         <!-- Horizontal Form -->
-                            <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Pemesan</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputAddres5s"
-                                        placeholder="{{ $order->name }}" disabled>
-                                </div>
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Pemesan</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputAddres5s"
+                                    placeholder="{{ $order->name }}" disabled>
                             </div>
-                            <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Nomor Meja</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputAddres5s" placeholder="{{ $order->table->no_table }}" disabled>
-                                </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Nomor Meja</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputAddres5s"
+                                    placeholder="{{ $order->table->no_table }}" disabled>
                             </div>
-                            <div class="row mb-3">
-                                <label for="inputPassword3" class="col-sm-2 col-form-label">Produk & Jumlah</label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" disabled>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputPassword3" class="col-sm-2 col-form-label">Produk & Jumlah</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" disabled>
                                         @foreach ($order_detail as $item)
                                             {{ $item->product->name }}
                                         @endforeach
                                     </textarea>
-                                </div>
                             </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Unduh Struk Pesanan</label>
+                            <div class="col-sm-10">
+                                <a href="/download_bill/{{ $order->id }}">
+                                    <button type="button" class="btn btn-warning">Unduh Struk</button>
+                                </a>
+                            </div>
+                        </div>
+                        @if ($order->status == 0)
                             <div class="row mb-3">
-                                <label for="inputState" class="form-label">Status Pesanan</label>
-                                @if ($order->status == 0)
-                                    Pesanan Masuk
-                                @elseif ($order->status == 1)
-                                    Semua Pesanan Telah Dihidangkan
-                                @elseif ($order->status == 2)
-                                    Pesanan Dibatalkan
-                                @endif
-                            </div>
-                            <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Unduh Struk Pesanan</label>
-                                <div class="col-sm-10">
-                                    <button type="button" class="btn btn-warning">Struk Pesanan</button>
-                                </div>
-                            </div>
-                            @if ($order->status == 0)
-                                <div class="row mb-3">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Aksi Pesanan</label>
+                                <div class="col-md-2">
                                     <form action="/finish_order" method="POST">
-                                    @csrf
-                                        <input type="text" value="{{$order->id}}" name="order_id" hidden>
+                                        @csrf
+                                        <input type="text" value="{{ $order->id }}" name="order_id" hidden>
                                         <button type="submit" class="btn btn-success">
-                                            Finish Order
-                                        </button>
-                                    </form>
-                                    <form action="/cancel_order" method="POST">
-                                    @csrf
-                                        <input type="text" value="{{$order->id}}" name="order_id" hidden>
-                                        <button type="submit" class="btn btn-success">
-                                            Cancel Order
+                                            Terima Pesanan
                                         </button>
                                     </form>
                                 </div>
-                            @else
-                                Order Closed
+                                <div class="col-md-2">
+                                    <form action="/cancel_order" method="POST">
+                                        @csrf
+                                        <input type="text" value="{{ $order->id }}" name="order_id" hidden>
+                                        <button type="submit" class="btn btn-danger">
+                                            Batalkan Pesanan
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        @endif
+                        <div class="row mb-3">
+                            <label for="inputState" class="form-label">Status Pesanan</label>
+                            @if ($order->status == 0)
+                                <button disabled type="button" class="btn btn-primary">Pesanan Masuk</button>
+                            @elseif ($order->status == 1)
+                                <button disabled type="button" class="btn btn-success">Pesanan Selesai</button>
+                            @elseif ($order->status == 2)
+                                <button disabled type="button" class="btn btn-danger">Pesanan Dibatalkan</button>
                             @endif
+                        </div>
                         <!-- End Horizontal Form -->
                     </div>
                 </div>

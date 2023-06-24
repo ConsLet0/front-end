@@ -7,28 +7,15 @@
             <div class="row mb-4">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text"
-                            name="tanggalAwal"
-                            class="form-control"
-                            placeholder="Tangal Awal"
-                            onfocusin="(this.type='date')"
-                            onfocusout="(this.type='text')"
-                            value=""
-                            required
-                        />
+                        <input type="text" name="tanggalAwal" class="form-control" placeholder="Tangal Awal"
+                            onfocusin="(this.type='date')" onfocusout="(this.type='text')" value="" required />
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text"
-                            name="tanggalAkhir"
-                            value=""
-                            class="form-control"
-                            placeholder="Tangal Akhir"
-                            onfocusin="(this.type='date')"
-                            onfocusout="(this.type='text')"
-                            required
-                        />
+                        <input type="text" name="tanggalAkhir" value="" class="form-control"
+                            placeholder="Tangal Akhir" onfocusin="(this.type='date')" onfocusout="(this.type='text')"
+                            required />
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -69,7 +56,9 @@
                                 <td>DEBIT</td>
                             @endif
                             <td>{{ $order->created_at }}</td>
-                            <td><a href="/download_bill/{{ $order->id }}"><span class="badge bg-success">Download Bill</span></a></td>
+                            <td><a href="/download_bill/{{ $order->id }}"> <button type="button"
+                                        class="btn btn-warning">Unduh Struk</button>
+                                </a></td>
                         </tr>
                     @endforeach
                     {{-- <tr>
@@ -92,10 +81,10 @@
     $('#table_laporan_penjualan').DataTable({
         responsive: true,
         lengthCase: true,
-        autoWidth:true,
-        paging:true,
-        searching:true,
-        ordering:true,
-        info:true,
-});
+        autoWidth: true,
+        paging: true,
+        searching: true,
+        ordering: true,
+        info: true,
+    });
 </script>

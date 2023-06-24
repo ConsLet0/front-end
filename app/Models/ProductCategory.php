@@ -16,6 +16,6 @@ class ProductCategory extends Model
     }
 
     public function menu_category(){
-        return $this->belongsTo(MenuCategory::class);
+        return $this->hasMany(MenuCategory::class);
     }
 }

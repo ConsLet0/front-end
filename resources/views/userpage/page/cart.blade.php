@@ -20,6 +20,11 @@
     <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
         <div class="container">
+            @if(session('successdelete'))
+                <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
+                    {{ session('successdelete') }}
+                </div>
+            @endif
             <div class="row">
                 <div class="col-lg-12">
                     @if (empty($cart) || count($cart) == 0)
@@ -34,9 +39,10 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th class="shoping__product">Products</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
+                                        <th class="shoping__product">Nama Produk</th>
+                                        <th></th>
+                                        <th>Harga</th>
+                                        <th>Jumlah</th>
                                         <th>Total</th>
                                         <th></th>
                                     </tr>
@@ -53,8 +59,11 @@
                                         {{-- Start foreach product list --}}
                                         <tr>
                                             <td class="shoping__cart__item">
-                                                <img src="{{ url('product/' . $val['image']) }}" alt="">
                                                 <h5>{{ $val['name'] }}</h5>
+                                            </td>
+                                            <td class="shoping__cart__item">
+                                                <img src="{{ url('product/' . $val['image']) }}" style="width: 100px"
+                                                    alt="">
                                             </td>
                                             <td class="shoping__cart__price">
                                                 ${{ $p }}
@@ -82,42 +91,51 @@
                                     <?php $tp = number_format($total_price, 0, ',', '.'); ?>
                                 </tbody>
                             </table>
-
                         </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="/product" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                        <a href="#" onclick="refreshPage()" class="primary-btn cart-btn cart-btn-right"><span
-                                class="icon_loading"></span>
-                            Upadate Cart</a>
+                        <a href="/product_detail/1" class="primary-btn cart-btn">Lanjut Belanja</a>
+                        <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                            Segarkan Halaman</a>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-lg-6">
+                    <div class="shoping__continue">
+                        <form action="{{ route('checkout') }}">
+                            <div class="shoping__discount">
+                                <h5>Data Pemesan</h5>
+                                <input class="checkout_name" type="text" name="name" placeholder="Masukkan Nama Anda">
+                                <div class="shoping_discount">
+                                    <select class="mt-2 checkout_dropdown" name="payment_method_id" class="shoping__continue">
+                                        <option disabled selected>Metode Pembayaran</option>
+                                        @foreach ($payment_method as $pm)
+                                            <option value="{{ $pm->id }}">{{ $pm->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <select class="mt-2 checkout_dropdown" name="table_id" class="shoping__continue">
+                                        <option disabled selected>Nomor Meja</option>
+                                        @foreach ($table as $tbl)
+                                            <option value="{{ $tbl->id }}">{{ $tbl->no_table }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mt-2 shoping_discount">
+                                    <button class="submit_checkout" type="submit">Checkout  </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6">
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
                             <li>Subtotal <span>${{ $tp }}</span></li>
                             <li>Total <span>${{ $tp }}</span></li>
                         </ul>
-                        <form action="{{ route('checkout') }}" enctype="multipart/form-data">
-                            <input type="text" name="name" placeholder="Input Your Name">
-                            <select name="payment_method_id" class="form-select" aria-label="Default select example">
-                                <option disabled selected>Payment Method</option>
-                                @foreach ($payment_method as $pm)
-                                    <option value="{{ $pm->id }}">{{ $pm->name }}</option>
-                                @endforeach
-                            </select>
-                            <select name="table_id" class="form-select" aria-label="Default select example">
-                                <option disabled selected>No_Table</option>
-                                @foreach ($table as $tbl)
-                                    <option value="{{ $tbl->id }}">{{ $tbl->no_table }}</option>
-                                @endforeach
-                            </select>
-                            <button type="submit">PROCEED TO CHECKOUT</button>
-                        </form>
                     </div>
                 </div>
             </div>

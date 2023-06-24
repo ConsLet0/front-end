@@ -18,11 +18,11 @@
                     <th scope="row">{{ $order->id }}</th>
                     <td>
                         @if ($order->status == 0)
-                            <button type="button" class="btn btn-danger" disabled>Pesanan
+                            <button type="button" class="btn btn-primary" disabled>Pesanan
                                 Masuk</button>
                             <p>{{ $order->created_at }}</p>
                         @elseif ($order->status == 1)
-                            <button type="button" class="btn btn-danger" disabled>Pesanan Telah Dihidangkan</button>
+                            <button type="button" class="btn btn-success" disabled>Pesanan Telah Dihidangkan</button>
                             <p>{{ $order->updated_at }}</p>
                         @elseif ($order->status == 2)
                             <button type="button" class="btn btn-danger" disabled>Pesanan Dibatalkan</button>

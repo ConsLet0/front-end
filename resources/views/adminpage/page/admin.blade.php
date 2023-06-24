@@ -9,12 +9,24 @@
             </ol>
         </nav>
     </div><!-- End Page Title -->
-    @endsection
-    @section('content')
+@endsection
+@section('content')
     <section class="section">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addadmin"><i class="bi bi-plus-square"></i> Tambah Admin</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addadmin"><i
+                class="bi bi-plus-square"></i> Tambah Admin</button>
         <div class="row">
             <div class="col-lg-12">
+                @if (session('erroradd'))
+                    <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                        {{ session('erroradd') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @elseif(session('successadd'))
+                    <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                        {{ session('successadd') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-body">
                         <!-- Table with stripped rows -->
@@ -23,7 +35,6 @@
                                 <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,9 +43,6 @@
                                     <tr>
                                         <th scope="row">{{ $admin->id }}</th>
                                         <td>{{ $admin->email }}</td>
-                                        <td>
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editadmin"><i class="ri ri-eye-fill"></i></button>
-                                        </td>
                                     </tr>
                                     {{-- Kategori foreach End --}}
                                 @endforeach
