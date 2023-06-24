@@ -66,4 +66,12 @@ class AdminController extends Controller
 
         return back()->with('message', 'Order Canceled!');
     }
+
+    public function delete_order($id)
+    {
+        $delete_order = Order::find($id);
+
+        $delete_order->delete();
+        return back()->with('successdelete','Category has been deleted!');
+    }
 }

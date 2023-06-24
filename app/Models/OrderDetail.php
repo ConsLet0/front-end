@@ -13,18 +13,14 @@ class OrderDetail extends Model
     use HasFactory;
 
     protected $fillable = [
-        'product_id', 'order_id', 'quantity', 'price', 'sub_total'
+        'product_id', 'order_id'
     ];
 
-    public static function add_order_detail($product_id, $order_id, $quantity, $price, $sub_total){
+    public static function add_order_detail($product_id, $order_id){
         OrderDetail::create([
             'product_id' => $product_id,
-            'quantity' => $quantity,
-            'price' => $price,
-            'sub_total' => $sub_total,
             'order_id' => $order_id,
         ]);
-
     }
 
     public function product(){

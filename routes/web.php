@@ -67,11 +67,12 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin', [UserController::class, 'show_all_admin'])->name('admin_admin');
     Route::post('/add_admin', [UserController::class, 'add_admin']);
 
-   Route::get('/order', [AdminController::class, 'order']);
-   Route::get('/order_detail/{id}', [AdminController::class, 'order_detail']);
-   Route::post('/finish_order', [AdminController::class, 'finish_order']);
-   Route::post('/cancel_order', [AdminController::class, 'cancel_order']);
-    
+    Route::get('/order', [AdminController::class, 'order']);
+    Route::get('/order_detail/{id}', [AdminController::class, 'order_detail']);
+    Route::post('/finish_order', [AdminController::class, 'finish_order']);
+    Route::post('/cancel_order', [AdminController::class, 'cancel_order']);
+    Route::get('/delete_order/{id}', [AdminController::class, 'delete_order']);
+
     // Route::get('/detailorder/all', function () {
     //     return view('adminpage.page.detailorder-allorder')->name('admin_order');
     // });

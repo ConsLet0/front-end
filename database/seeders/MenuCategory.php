@@ -16,11 +16,11 @@ class MenuCategory extends Seeder
     public function run()
     {
         DB::table('menu_categories')->insert([
-            'name' => 'Fresh Meat',
+            'name' => 'Indomie',
             'product_category_id' => 1,
         ]);
         DB::table('menu_categories')->insert([
-            'name' => 'Vegetables',
+            'name' => 'Cookie',
             'product_category_id' => 1,
         ]);
         DB::table('menu_categories')->insert([

@@ -12,5 +12,5 @@ Rp.{{ $bill->total_price }}
 {{-- @dd($detail) --}}
 @foreach ($detail as $item)
 {{-- @dd($item->product->name) --}}
-{{ $item->product->name }} {{ $item->price }} {{ $item->quantity }} {{ $item->sub_total }}
+    {{ $item->product->name }}
 @endforeach
