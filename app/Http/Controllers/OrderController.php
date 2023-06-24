@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\Order;
 use App\Models\Table;
 use App\Models\Product;
-use PDF;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use App\Models\PaymentMethod;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
@@ -44,6 +45,15 @@ class OrderController extends Controller
     }
 
     public function checkout(Request $request){
+        $rules = [
+            'name' => 'required',
+            'payment_method_id' => 'required',
+            'table_id' => 'required',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return back()->withErrors($validator);
+        }
         // dd($request);
         $cart = session('cart');
         $order_id = Order::add_order($request);

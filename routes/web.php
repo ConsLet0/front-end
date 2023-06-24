@@ -31,6 +31,8 @@ Route::get('/cart', [OrderController::class, 'view_cart'])->name('view_cart');
 Route::get('/remove_cart/{id}', [OrderController::class, 'remove_cart'])->name('remove_cart');
 Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');
 Route::get('/product_detail/{id}', [ProductController::class, 'product_detail']);
+Route::get('/download_bill/{id}', [OrderController::class, 'download_bill'])->name('download_bill');
+
 Route::get('/contact', function () {
     return view('userpage.page.contact');
 });
@@ -43,7 +45,6 @@ Route::get('/login', function () {
 Route::post('/login', [UserController::class, 'signin']);
 Route::middleware(['admin'])->group(function () {
     Route::get('/homepage', [AdminController::class, 'dashboard'])->name('admin_home');
-    Route::get('/download_bill/{id}', [OrderController::class, 'download_bill'])->name('download_bill');
 
     Route::get('/category', [MenuCategoryController::class, 'get_all_onadmin'])->name('admin_category');
     Route::get('/edit_category_page/{id}', [MenuCategoryController::class, 'edit_category_page']);
