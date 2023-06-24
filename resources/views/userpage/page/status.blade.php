@@ -20,7 +20,7 @@
     <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
         <div class="container">
-            @if(session('successcheckout'))
+            @if (session('successcheckout'))
                 <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
                     {{ session('successcheckout') }}
                 </div>
@@ -37,37 +37,47 @@
                                     <th>Order Detail</th>
                                 </tr>
                             </thead>
+                            @if ($order->status == 0)
                             <tbody>
-                                {{-- @dd($order->order_id) --}}
-                                {{-- @foreach ($order as $item) --}}
-                                {{-- @dd($item) --}}
-                                    {{-- Start foreach product list --}}
-                                    <tr>
-                                        <td class="shoping__cart__item">
-                                            <h5>{{ $order->name }}</h5>
-                                        </td>
-                                        <td class="shoping__cart__price">
-                                            @if ($order->status == 0)
-                                                On Proccess
-                                            @elseif ($order->status == 1)
-                                                Finished
-                                            @endif
-                                        </td>
-                                        <td>
-                                            ${{ $order->total_price }}
-                                        </td>
-                                        <td>
-                                            <a href="/download_bill/{{ $order->id }}">
-                                                <button type="button" class="btn btn-warning">Unduh Struk</button>
-                                            </a>
-                                        </td>
-                                        {{-- <td class="shoping__cart__quantity">
-                                            <button type="button" class="btn btn-warning">Download Bill</button>
-                                        </td> --}}
-                                    </tr>
-                                    {{-- End foreach product list --}}
-                                {{-- @endforeach --}}
+                                <tr>
+                                    <td class="shoping__cart__item">
+                                        <h5>{{ $order->name }}</h5>
+                                    </td>
+                                    <td class="shoping__cart__price">
+                                        @if ($order->status == 0)
+                                        On Proccess
+                                        @elseif ($order->status == 1)
+                                        Finished
+                                        @endif
+                                    </td>
+                                    <td>
+                                        Rp.{{ $order->total_price }}
+                                    </td>
+                                    <td>
+                                        <h6 class="mb-2"><strong style="color: red">Segera Unduh Struk Anda</strong></h6>
+                                        <a href="/download_bill/{{ $order->id }}">
+                                            <button type="button" class="btn btn-warning">Unduh Struk</button>
+                                        </a>
+                                    </td>
+                                </tr>
                             </tbody>
+                            @elseif ($order->status == 1)
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <h3 class="col-lg-12">No Data</h3>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            @elseif ($order->status == 2)
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <h3 class="col-lg-12">No Data</h3>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            @endif
                         </table>
                     </div>
                 </div>

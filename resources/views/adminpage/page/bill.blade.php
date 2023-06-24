@@ -2,7 +2,7 @@
 {{ $bill->created_at }}
 {{ $bill->name }}
 {{ $bill->quantity }}
-{{ $bill->total_price }}
+Rp.{{ $bill->total_price }}
 @if ($bill->payment_method_id == 1)
     Cash
 @elseif ($bill->payment_method_id == 2)

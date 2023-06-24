@@ -52,7 +52,7 @@ class OrderController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-            return back()->withErrors($validator);
+            return back()->with('errorcheckout', 'Pastikan Semua Data Terisi !');
         }
         // dd($request);
         $cart = session('cart');

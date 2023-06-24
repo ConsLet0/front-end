@@ -64,7 +64,7 @@ class ProductController extends Controller
             'product_category' => 'required',
             'menu_category' => 'required',
             'name' => 'required|max:50',
-            'description' => 'required|max:120',
+            'description' => 'required|max:1000',
             'price' => 'required',
             'status' => 'required',
             'image' => 'required|image|mimes:jpg,png'

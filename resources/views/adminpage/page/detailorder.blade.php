@@ -1,10 +1,10 @@
 @extends('adminpage.layout.main')
 @section('breadcrumb')
     <div class="pagetitle">
-        <h1>Dashboard</h1>
+        <h1>Detail Pesanan {{ $order->name }}</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item active">Cek Pesanan</li>
                 <li class="breadcrumb-item"><a href="/homepage">Home</a></li>
             </ol>
         </nav>
@@ -40,10 +40,10 @@
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Produk & Jumlah</label>
                             <div class="col-sm-10">
                                 <textarea class="form-control" disabled>
-                                        @foreach ($order_detail as $item)
-                                            {{ $item->product->name }}
-                                        @endforeach
-                                    </textarea>
+                                    @foreach ($order_detail as $item)
+                                        {{ $item->product->name }}
+                                    @endforeach
+                                </textarea>
                             </div>
                         </div>
                         <div class="row mb-3">
