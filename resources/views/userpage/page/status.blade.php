@@ -45,9 +45,11 @@
                                     </td>
                                     <td class="shoping__cart__price">
                                         @if ($order->status == 0)
-                                        On Proccess
+                                            On Proccess
                                         @elseif ($order->status == 1)
-                                        Finished
+                                            Finished
+                                        @elseif ($order->status == 2)
+                                            Canceled
                                         @endif
                                     </td>
                                     <td>

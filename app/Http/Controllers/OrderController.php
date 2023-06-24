@@ -60,7 +60,9 @@ class OrderController extends Controller
         foreach ($cart as $ct => $val) {
             $product_id = $ct;
             $quantity = $val['quantity'];
-            OrderDetail::add_order_detail($product_id, $order_id, $quantity);
+            $price = $val['price'];
+            $sub_total = $price * $quantity;
+            OrderDetail::add_order_detail($product_id, $order_id, $quantity, $price, $sub_total);
         }
         session()->forget('cart');
         // dd($order_id);
