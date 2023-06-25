@@ -83,24 +83,3 @@
     </section>
     @include('adminpage.modal.category.addcategorymodal')
 @endsection
-
-@section('script')
-    <script>
-        // jqdoc
-    </script>
-@endsection
-
-{{-- @section('script')
-    <script>
-        $(document).ready(function () {
-            $(.deleteCategoryBtn).click(function (e) { 
-                e.preventDefault();
-                
-                var category_id = $(this).val();
-                $('#menu_category_id').val(menu_category_id);
-
-                $('#deleteModal').modal('show');
-            });
-        });
-    </script>
-@endsection --}}

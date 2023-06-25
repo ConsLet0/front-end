@@ -37,28 +37,30 @@
                 @endif
                 <div class="card">
                     <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col-md-3">
-                                <select id="menu_category" name="menu_category" class="form-select"
-                                    aria-label="Default select example">
-                                    <option disabled selected>Kategori Produk</option>
-                                    @foreach ($menu_categories as $mct)
-                                        <option value="{{ $mct->id }}">{{ $mct->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-info filter-button"><i class="bi bi-search"></i>
-                                        Filter</button>
-                                    <button type="button" class="btn btn-warning reset-button"><i
-                                            class="bi bi-list-check"></i> Semua
-                                        Kategori</button>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#addproducts"><i class="bi bi-plus-square"></i> Tambah Menu</button>
+                        <form action="/products" method="get">
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <select id="menu_category" name="menu_category_id" class="form-select"
+                                        aria-label="Default select example">
+                                        <option disabled selected>Kategori Produk</option>
+                                        @foreach ($menu_categories as $mct)
+                                            <option value="{{ $mct->id }}" {{ $request->id === $mct->id ? 'selected' : '' }}>{{ $mct->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-info filter-button"><i class="bi bi-search"></i>
+                                            Filter</button>
+                                        <button type="button" class="btn btn-warning reset-button"><i
+                                                class="bi bi-list-check"></i> Semua
+                                            Kategori</button>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#addproducts"><i class="bi bi-plus-square"></i> Tambah Menu</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                         <!-- Table with stripped rows -->
                         <table class="table datatable">
                             <thead>

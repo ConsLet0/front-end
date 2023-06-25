@@ -12,12 +12,18 @@ use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
-    public function show_products_onadmin(){
-        $products = Product::all();
+    public function show_products_onadmin(Request $request){
+        $products = Product::orderBy('id', 'desc')
+            ->with('menu_category')
+            ->when($request->menu_category_id, function ($query) use ($request) {
+                $query->where('menu_category_id', $request->menu_category_id);
+            })
+            ->paginate(10);
+
         $product_categories = ProductCategory::all();
         $menu_categories = MenuCategory::all();
 
-        return view('adminpage.page.products', compact('products', 'product_categories', 'menu_categories'));
+        return view('adminpage.page.products', compact('products', 'request', 'product_categories', 'menu_categories'));
     }
 
     public function edit_product_page($id){
