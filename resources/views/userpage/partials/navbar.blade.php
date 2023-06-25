@@ -8,11 +8,6 @@
     <div class="header__logo">
         <a href="/"><img src="{{ asset('userpage/img/logo.png') }}" alt=""></a>
     </div>
-    <div class="humberger__menu__cart">
-        <ul>
-            <li><a href="/cart"><i class="fa fa-shopping-bag"></i></a></li>
-        </ul>
-    </div>
     <nav class="humberger__menu__nav mobile-menu">
         <?php
         $category = DB::table('product_categories')
@@ -58,6 +53,13 @@
                         <li><a href="/status">Status</a></li>
                     </ul>
                 </nav>
+            </div>
+            <div class="col-lg-3">
+                <div class="header__cart">
+                    <ul>
+                        <li><a href="/cart"><i class="fa fa-shopping-bag"></i></a></li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="humberger__open">
