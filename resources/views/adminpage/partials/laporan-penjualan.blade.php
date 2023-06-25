@@ -49,7 +49,7 @@
                             <th scope="row">{{ $order->id }}</th>
                             <td>{{ $order->name }}</td>
                             <td>{{ $order->table->no_table }}</td>
-                            <td>${{ $order->total_price }}</td>
+                            <td>Rp.{{ $order->total_price }}</td>
                             @if ($order->payment_method_id == 1)
                                 <td>CASH</td>
                             @elseif ($order->payment_method_id == 2)
