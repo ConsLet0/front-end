@@ -27,8 +27,9 @@
     <link href="{{ asset('adminpage/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
     <link href="{{ asset('adminpage/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
     <link href="{{ asset('adminpage/vendor/simple-datatables/style.css') }}" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+        <!-- Template Main CSS File -->
     <link href="{{ asset('adminpage/css/style.css') }}" rel="stylesheet">
 
     <!-- =======================================================
@@ -78,7 +79,6 @@
     <script src="{{ asset('adminpage/vendor/simple-datatables/simple-datatables.js') }}"></script>
     <script src="{{ asset('adminpage/vendor/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('adminpage/vendor/php-email-form/validate.js') }}"></script>
-
     <!-- Template Main JS File -->
     <script src="{{ asset('adminpage/js/main.js') }}"></script>
 

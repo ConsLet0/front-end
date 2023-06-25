@@ -25,7 +25,8 @@
                     <td>
                         <a href="/detailorder/all"><button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#editcategory"><i class="ri ri-eye-line"></i></button></a>
-                        <a href="/delete_order/{{ $order->id }}" onclick="event.preventDefault(); if(confirm('Apakah Anda yakin ingin menghapus pesanan ini?')) { window.location.href = '{{ url('/delete_order/'.$order->id) }}'; }">
+                        <a href="/delete_order/{{ $order->id }}"
+                            onclick="event.preventDefault(); if(confirm('Apakah Anda yakin ingin menghapus pesanan ini?')) { window.location.href = '{{ url('/delete_order/' . $order->id) }}'; }">
                             <button type="button" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
                         </a>
                     </td>

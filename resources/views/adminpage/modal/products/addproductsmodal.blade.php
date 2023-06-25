@@ -27,7 +27,7 @@
                         </div>
                         <div class="col-md-12 mb-2">
                             <label for="product_category"><strong>Jenis</strong></label>
-                            <select name="product_category" class="form-select" aria-label="Default select example">
+                            <select id="product_category" name="product_category" class="form-select" aria-label="Default select example">
                                 <option disabled selected>Jenis Produk</option>
                                 @foreach ($product_categories as $pct)
                                     <option value="{{ $pct->id }}">{{ $pct->name }}</option>
@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-md-12 mb-2">
                             <label for="menu_category"><strong>Kategori</strong></label>
-                            <select name="menu_category" class="form-select" aria-label="Default select example">
+                            <select id="menu_category" name="menu_category" class="form-select" aria-label="Default select example">
                                 <option disabled selected>Kategori Produk</option>
                                 @foreach ($menu_categories as $mct)
                                     <option value="{{ $mct->id }}">{{ $mct->name }}</option>

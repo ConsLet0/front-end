@@ -41,7 +41,7 @@
                             <div class="col-sm-10">
                                 <textarea class="form-control" disabled>
                                     @foreach ($order_detail as $item)
-                                        {{ $item->product->name }}
+                                        {{ $item->product->name }} {{ $item->quantity }}
                                     @endforeach
                                 </textarea>
                             </div>

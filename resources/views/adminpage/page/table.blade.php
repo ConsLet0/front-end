@@ -13,7 +13,7 @@
 @section('content')
     <section class="section">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addmeja"><i
-            class="bi bi-plus-square"></i> Tambah Meja</button>
+                class="bi bi-plus-square"></i> Tambah Meja</button>
         <div class="row">
             <div class="col-lg-12">
                 @if (session('erroradd'))
@@ -37,7 +37,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
-                
+
                 <div class="card">
                     <div class="card-body">
                         <!-- Table with stripped rows -->
@@ -50,10 +50,13 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $counter = 1; // Inisialisasi counter
+                                @endphp
                                 @foreach ($tables as $table)
                                     {{-- Kategori foreach start --}}
                                     <tr>
-                                        <th scope="row">{{ $table->id }}</th>
+                                        <th scope="row">{{ $counter }}</th>
                                         <td>{{ $table->no_table }}</td>
                                         <td>
                                             <a href="/edit_table/{{ $table->id }}">
@@ -68,9 +71,13 @@
                                         </td>
                                     </tr>
                                     {{-- Kategori foreach End --}}
+                                    @php
+                                        $counter++; // Increment counter setiap iterasi
+                                    @endphp
                                 @endforeach
                             </tbody>
                         </table>
+
                         <!-- End Table with stripped rows -->
                     </div>
                 </div>

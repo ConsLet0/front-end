@@ -12,7 +12,7 @@
         </thead>
         <tbody>
             @foreach ($orders as $order)
-            {{-- @dd($order) --}}
+                {{-- @dd($order) --}}
                 {{-- Kategori foreach start --}}
                 <tr>
                     <th scope="row">{{ $order->id }}</th>
@@ -32,10 +32,13 @@
                     <th scope="row">{{ $order->name }}</th>
                     <th scope="row">{{ $order->table->no_table }}</th>
                     <td>
-                        <a href="/order_detail/{{ $order->id }}"><button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#editcategory"><i class="ri ri-eye-line"></i></button></a>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#deletecategory"><i class="bi bi-trash3"></i></button>
+                        <a href="/order_detail/{{ $order->id }}"><button type="button" class="btn btn-primary"
+                                data-bs-toggle="modal" data-bs-target="#editcategory"><i
+                                    class="ri ri-eye-line"></i></button></a>
+                        <a href="/delete_order/{{ $order->id }}"
+                            onclick="event.preventDefault(); if(confirm('Apakah Anda yakin ingin menghapus pesanan ini?')) { window.location.href = '{{ url('/delete_order/' . $order->id) }}'; }">
+                            <button type="button" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+                        </a>
                     </td>
                 </tr>
                 {{-- Kategori foreach End --}}

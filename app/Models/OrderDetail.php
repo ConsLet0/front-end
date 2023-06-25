@@ -11,15 +11,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class OrderDetail extends Model
 {
     use HasFactory;
-
+    
     protected $fillable = [
-        'product_id', 'order_id'
+        'product_id', 'order_id', 'price', 'quantity', 'subtotal'
     ];
 
-    public static function add_order_detail($product_id, $order_id){
+    public static function add_order_detail($product_id, $order_id, $price, $quantity, $subtotal){
         OrderDetail::create([
             'product_id' => $product_id,
             'order_id' => $order_id,
+            'price' => $price,
+            'quantity' => $quantity,
+            'subtotal' => $subtotal,
         ]);
     }
 

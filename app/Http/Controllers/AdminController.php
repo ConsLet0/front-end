@@ -72,6 +72,6 @@ class AdminController extends Controller
         $delete_order = Order::find($id);
 
         $delete_order->delete();
-        return back()->with('successdelete','Category has been deleted!');
+        return back()->with('successdelete','Order has been deleted!');
     }
 }

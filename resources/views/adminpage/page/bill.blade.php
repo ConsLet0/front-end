@@ -13,4 +13,7 @@ Rp.{{ $bill->total_price }}
 @foreach ($detail as $item)
 {{-- @dd($item->product->name) --}}
     {{ $item->product->name }}
+    {{ $item->price }}
+    {{ $item->quantity }}
+    {{ $item->subtotal }}
 @endforeach

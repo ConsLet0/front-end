@@ -39,24 +39,20 @@
                     <div class="card-body">
                         <div class="row mb-3">
                             <div class="col-md-3">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option disabled selected>Jenis Menu</option>
-                                    <option value="1">Makanan</option>
-                                    <option value="2">Minuman</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option disabled selected>Kategori</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <select id="menu_category" name="menu_category" class="form-select"
+                                    aria-label="Default select example">
+                                    <option disabled selected>Kategori Produk</option>
+                                    @foreach ($menu_categories as $mct)
+                                        <option value="{{ $mct->id }}">{{ $mct->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <button type="button" class="btn btn-info"><i class="bi bi-search"></i> Filter</button>
-                                    <button type="button" class="btn btn-warning"><i class="bi bi-list-check"></i> Semua
+                                    <button type="button" class="btn btn-info filter-button"><i class="bi bi-search"></i>
+                                        Filter</button>
+                                    <button type="button" class="btn btn-warning reset-button"><i
+                                            class="bi bi-list-check"></i> Semua
                                         Kategori</button>
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#addproducts"><i class="bi bi-plus-square"></i> Tambah Menu</button>
@@ -70,6 +66,7 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Nama Menu</th>
                                     <th scope="col">Jenis Menu</th>
+                                    <th scope="col">Kategori Menu</th>
                                     <th scope="col">Foto</th>
                                     <th scope="col">Harga</th>
                                     <th scope="col">Status</th>
@@ -83,6 +80,7 @@
                                         <th scope="row">1</th>
                                         <td>{{ $product->name }}</td>
                                         <td>{{ $product->product_category->name }}</td>
+                                        <td>{{ $product->menu_category->name }}</td>
                                         <td>
                                             <img src="{{ asset('product/' . $product->image) }}" width="60px"
                                                 alt="">
@@ -115,9 +113,41 @@
                         <!-- End Table with stripped rows -->
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
     @include('adminpage.modal.products.addproductsmodal')
+@section('script')
+    <script>
+        // Fungsi untuk menangani perubahan pada dropdown menu_category
+        document.getElementById('menu_category').addEventListener('change', function() {
+            var menuCategoryId = this.value;
+            // Lakukan penanganan sesuai kebutuhan, misalnya mengirim form atau membuat request AJAX
+            console.log('Menu Category ID:', menuCategoryId);
+            // Panggil fungsi filter disini
+            filterData(menuCategoryId);
+        });
+
+        // Fungsi untuk menangani klik filter button
+        document.querySelector('.filter-button').addEventListener('click', function() {
+            var menuCategoryId = document.getElementById('menu_category').value;
+            // Panggil fungsi filter disini
+            filterData(menuCategoryId);
+        });
+
+        // Fungsi untuk menangani klik reset button
+        document.querySelector('.reset-button').addEventListener('click', function() {
+            var menuCategoryId = ''; // Kosongkan nilai menuCategoryId untuk menampilkan semua kategori
+            // Panggil fungsi filter disini
+            filterData(menuCategoryId);
+        });
+
+        // Fungsi untuk melakukan filter data berdasarkan menu category
+        function filterData(menuCategoryId) {
+            // Lakukan penanganan sesuai kebutuhan, misalnya mengirim form atau membuat request AJAX
+            console.log('Filter by Menu Category ID:', menuCategoryId);
+            // Implementasikan logika filter data di sini
+        }
+    </script>
+@endsection
 @endsection

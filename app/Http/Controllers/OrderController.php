@@ -60,13 +60,15 @@ class OrderController extends Controller
         foreach ($cart as $ct => $val) {
             $product_id = $ct;
             $quantity = $val['quantity'];
-            OrderDetail::add_order_detail($product_id, $order_id, $quantity);
+            $price = $val['price'];
+            $subtotal = $price * $quantity;
+            OrderDetail::add_order_detail($product_id, $order_id, $price, $quantity, $subtotal);
         }
         session()->forget('cart');
         // dd($order_id);
         $my_order_detail = OrderDetail::where('order_id', $order_id)->get();
 
-        return redirect('/status')->with('successcheckout', 'Checkout Berhasil, Silahkan Tunggu Pesanan Kamu Datang');
+        return redirect('/status')->with('successcheckout', 'Checkout Berhasil, Silahkan Tunggu Pesanan Kamu Datang');
     }
 
     public function show_ordered(){
