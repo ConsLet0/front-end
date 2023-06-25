@@ -40,13 +40,13 @@
 
                         <div class="product__details__text">
                             <h3>{{ $product->name }}</h3>
-                            <div class="product__details__price">${{ $product->price }}</div>
+                            <div class="product__details__price">Rp.{{ $product->price }}</div>
                             <p>{{ $product->description }}</p>
                             @if ($product->status == 1)
                                 <div class="product__details__quantity">
                                     <div class="quantity">
                                         <div class="pro-qty">
-                                            <input type="number" value="1" name="quantity">
+                                            <input type="text" value="1" name="quantity">
                                         </div>
                                     </div>
                                 </div>

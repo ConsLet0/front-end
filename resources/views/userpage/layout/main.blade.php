@@ -95,7 +95,11 @@
     <script src="{{ asset('userpage/js/mixitup.min.js') }}"></script>
     <script src="{{ asset('userpage/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('userpage/js/main.js') }}"></script>
-
+    <script>
+        function refreshPage() {
+            location.reload();
+        }
+    </script>
 </body>
 
 </html>

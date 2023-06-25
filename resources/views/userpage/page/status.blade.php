@@ -65,7 +65,7 @@
                                     @else
                                         <tbody>
                                             <tr>
-                                                <td>
+                                                <td colspan="4" style="text-align: center;">
                                                     <h3 class="col-lg-6">No Data</h3>
                                                 </td>
                                             </tr>
@@ -75,7 +75,7 @@
                             @else
                                 <tbody>
                                     <tr>
-                                        <td>
+                                        <td colspan="4" style="text-align: center;">
                                             <h3 class="col-lg-6">No Data</h3>
                                         </td>
                                     </tr>
