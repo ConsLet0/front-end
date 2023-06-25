@@ -72,7 +72,7 @@ class OrderController extends Controller
     }
 
     public function show_ordered(){
-        $order = Order::latest()->first();
+        $order = Order::latest()->get();
         return view('userpage.page.status', compact('order'));
     }
 

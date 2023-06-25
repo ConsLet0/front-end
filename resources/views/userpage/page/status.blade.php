@@ -1,4 +1,5 @@
 @extends('userpage.layout.main')
+
 @section('banner')
     <section class="breadcrumb-section set-bg" data-setbg="{{ asset('userpage/img/breadcrumb.jpg') }}">
         <div class="container">
@@ -16,6 +17,7 @@
         </div>
     </section>
 @endsection
+
 @section('content')
     <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
@@ -37,46 +39,47 @@
                                     <th>Order Detail</th>
                                 </tr>
                             </thead>
-                            @if ($order->status == 0)
-                            <tbody>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <h5>{{ $order->name }}</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        @if ($order->status == 0)
-                                        On Proccess
-                                        @elseif ($order->status == 1)
-                                        Finished
-                                        @endif
-                                    </td>
-                                    <td>
-                                        Rp.{{ $order->total_price }}
-                                    </td>
-                                    <td>
-                                        <h6 class="mb-2"><strong style="color: red">Segera Unduh Struk Anda</strong></h6>
-                                        <a href="/download_bill/{{ $order->id }}">
-                                            <button type="button" class="btn btn-warning">Unduh Struk</button>
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            @elseif ($order->status == 1)
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h3 class="col-lg-6">No Data</h3>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            @elseif ($order->status == 2)
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <h3 class="col-lg-6">No Data</h3>
-                                    </td>
-                                </tr>
-                            </tbody>
+                            @if ($order->count() > 0)
+                                @foreach ($order as $order)
+                                    @if ($order->status == 0)
+                                        <tbody>
+                                            <tr>
+                                                <td class="shoping__cart__item">
+                                                    <h5>{{ $order->name }}</h5>
+                                                </td>
+                                                <td class="shoping__cart__price">
+                                                    On Process
+                                                </td>
+                                                <td>
+                                                    Rp.{{ $order->total_price }}
+                                                </td>
+                                                <td>
+                                                    <h6 class="mb-2"><strong style="color: red">Segera Unduh Struk
+                                                            Anda</strong></h6>
+                                                    <a href="/download_bill/{{ $order->id }}">
+                                                        <button type="button" class="btn btn-warning">Unduh Struk</button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    @else
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <h3 class="col-lg-6">No Data</h3>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    @endif
+                                @endforeach
+                            @else
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <h3 class="col-lg-6">No Data</h3>
+                                        </td>
+                                    </tr>
+                                </tbody>
                             @endif
                         </table>
                     </div>

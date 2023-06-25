@@ -98,7 +98,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="/product_detail/1" class="primary-btn cart-btn">Lanjut Belanja</a>
+                        <a href="/category/1" class="primary-btn cart-btn">Lanjut Belanja</a>
                         <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
                             Segarkan Halaman</a>
                     </div>

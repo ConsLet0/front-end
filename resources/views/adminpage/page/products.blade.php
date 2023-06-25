@@ -43,20 +43,23 @@
                                     <select id="menu_category" name="menu_category_id" class="form-select"
                                         aria-label="Default select example">
                                         <option disabled selected>Kategori Produk</option>
+                                        <option value="" {{ empty($request->id) ? : '' }}>Semua Kategori
+                                        </option>
                                         @foreach ($menu_categories as $mct)
-                                            <option value="{{ $mct->id }}" {{ $request->id === $mct->id ? 'selected' : '' }}>{{ $mct->name }}</option>
+                                            <option value="{{ $mct->id }}"
+                                                {{ $request->id === $mct->id ? 'selected' : '' }}>{{ $mct->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-info filter-button"><i class="bi bi-search"></i>
+                                        <button type="submit" class="btn btn-info filter-button"><i
+                                                class="bi bi-search"></i>
                                             Filter</button>
-                                        <button type="button" class="btn btn-warning reset-button"><i
-                                                class="bi bi-list-check"></i> Semua
-                                            Kategori</button>
                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#addproducts"><i class="bi bi-plus-square"></i> Tambah Menu</button>
+                                            data-bs-target="#addproducts"><i class="bi bi-plus-square"></i> Tambah
+                                            Menu</button>
                                     </div>
                                 </div>
                             </div>
@@ -76,10 +79,13 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $counter = 1; // Inisialisasi counter
+                                @endphp
                                 @foreach ($products as $product)
-                                    {{-- Products foreach start --}}
+                                    {{-- Kategori foreach start --}}
                                     <tr>
-                                        <th scope="row">1</th>
+                                        <th scope="row">{{ $counter }}</th>
                                         <td>{{ $product->name }}</td>
                                         <td>{{ $product->product_category->name }}</td>
                                         <td>{{ $product->menu_category->name }}</td>
@@ -108,10 +114,12 @@
                                             </a>
                                         </td>
                                     </tr>
-                                    {{-- Products foreach end --}}
+                                    @php
+                                        $counter++; // Increment counter setiap iterasi
+                                    @endphp
                                 @endforeach
                             </tbody>
-                        </table>
+                            
                         <!-- End Table with stripped rows -->
                     </div>
                 </div>

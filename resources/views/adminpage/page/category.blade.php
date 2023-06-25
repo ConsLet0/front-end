@@ -51,11 +51,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- Kategori foreach start --}}
-                                {{-- @dd($menu_categories) --}}
+                                @php
+                                    $counter = 1; // Inisialisasi counter
+                                @endphp
                                 @foreach ($menu_categories as $ct)
+                                    {{-- Kategori foreach start --}}
                                     <tr>
-                                        <th scope="row">{{ $ct->id }}</th>
+                                        <th scope="row">{{ $counter }}</th>
                                         <td>{{ $ct->name }}</td>
                                         <td>
                                             {{ $ct->product_category->name }}
@@ -70,8 +72,10 @@
                                             </a>  
                                         </td>
                                     </tr>
+                                    @php
+                                        $counter++; // Increment counter setiap iterasi
+                                    @endphp
                                 @endforeach
-                                {{-- Kategori foreach End --}}
                             </tbody>
                         </table>
                         <!-- End Table with stripped rows -->

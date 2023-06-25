@@ -11,11 +11,12 @@
             </tr>
         </thead>
         <tbody>
+            @php
+                $counter = 1; // Inisialisasi counter
+            @endphp
             @foreach ($orders as $order)
-                {{-- @dd($order) --}}
-                {{-- Kategori foreach start --}}
                 <tr>
-                    <th scope="row">{{ $order->id }}</th>
+                    <th scope="row">{{ $counter }}</th>
                     <td>
                         @if ($order->status == 0)
                             <button type="button" class="btn btn-primary" disabled>Pesanan
@@ -41,7 +42,9 @@
                         </a>
                     </td>
                 </tr>
-                {{-- Kategori foreach End --}}
+                @php
+                    $counter++; // Increment counter setiap iterasi
+                @endphp
             @endforeach
         </tbody>
     </table>

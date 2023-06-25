@@ -38,13 +38,17 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $counter = 1; // Inisialisasi counter
+                                @endphp
                                 @foreach ($admins as $admin)
-                                    {{-- Kategori foreach start --}}
                                     <tr>
                                         <th scope="row">{{ $admin->id }}</th>
                                         <td>{{ $admin->email }}</td>
                                     </tr>
-                                    {{-- Kategori foreach End --}}
+                                    @php
+                                        $counter++; // Increment counter setiap iterasi
+                                    @endphp
                                 @endforeach
                             </tbody>
                         </table>
