@@ -31,11 +31,11 @@
             @endif
             <div class="row">
                 <div class="col-lg-12">
-                    @if (empty($cart) || count($cart) == 0)
+                        @if (empty($cart) || count($cart) == 0)
                         <div class="warn">
                             <h3>No Data</h3>
                         </div>
-                    @else
+                        @else
                         <div class="shoping__cart__table">
                             <?php $total_price = 0; ?>
                             <?php $total_quantity = 0; ?>
@@ -64,8 +64,7 @@
                                                 <h5>{{ $val['name'] }}</h5>
                                             </td>
                                             <td class="shoping__cart__item">
-                                                <img src="{{ url('product/' . $val['image']) }}" style="width: 100px"
-                                                    alt="">
+                                                <img src="{{ url('product/' . $val['image']) }}" style="width: 100px" alt="">
                                             </td>
                                             <td class="shoping__cart__price">
                                                 {{ 'Rp ' . $p }}
@@ -91,7 +90,7 @@
                                         <?php $total_quantity += $val['quantity']; ?>
                                     @endforeach
                                     <?php $tp = 'Rp ' . number_format($total_price, 0, ',', '.'); ?>
-                                </tbody>
+                                </tbody>                                
                             </table>
                         </div>
                 </div>
@@ -100,9 +99,8 @@
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
                         <a href="/category/1" class="primary-btn cart-btn">Lanjut Belanja</a>
-                        <a href="#" class="primary-btn cart-btn cart-btn-right" onclick="refreshPage()">
-                            <span class="icon_loading"></span> Segarkan Halaman
-                        </a>
+                        <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                            Segarkan Halaman</a>
                     </div>
                 </div>
                 <div class="col-lg-6">

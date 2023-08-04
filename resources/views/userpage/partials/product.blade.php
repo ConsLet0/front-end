@@ -11,13 +11,13 @@
             </div>
             <div class="product__item__text">
                 <h6><a href="/product_detail/{{ $product->id }}">{{ $product->name }}</a></h6>
-                <h5>Rp.{{ $product->price }}</h5>
+                <h5>${{ $product->price }}</h5>
                 <form class="mt-2" action="{{ route('add_to_cart', ['id' => $product->id]) }}">
                     @if ($product->status == 1)
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">
-                                    <input type="text" value="1" name="quantity">
+                                    <input type="number" value="1" name="quantity">
                                 </div>
                             </div>
                         </div>
