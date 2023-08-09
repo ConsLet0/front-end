@@ -69,12 +69,8 @@
                                             <td class="shoping__cart__price">
                                                 {{ 'Rp ' . $p }}
                                             </td>
-                                            <td class="shoping__cart__quantity">
-                                                <div class="quantity">
-                                                    <div class="pro-qty">
-                                                        <input type="text" value="{{ $val['quantity'] }}">
-                                                    </div>
-                                                </div>
+                                            <td class="shoping__cart__price">
+                                                {{ $val['quantity'] }}
                                             </td>
                                             <td class="shoping__cart__total">
                                                 {{ 'Rp ' . $sp }}
@@ -99,8 +95,6 @@
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
                         <a href="/category/1" class="primary-btn cart-btn">Lanjut Belanja</a>
-                        <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                            Segarkan Halaman</a>
                     </div>
                 </div>
                 <div class="col-lg-6">
